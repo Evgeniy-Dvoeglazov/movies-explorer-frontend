@@ -1,0 +1,21 @@
+.navTab {
+  background-color: #073042;
+  padding: 84px 0 75px;
+}
+
+.navTab__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 70px;
+  box-sizing: border-box;
+}
+
+.navTab__button {
+  font-size: 12px;
+  line-height: 1.33;
+  background-color: transparent;
+  color: #fff;
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, .6);
+  border-radius: 3px;
+}
