@@ -38,3 +38,40 @@
   line-height: 1.43;
   margin: 0;
 }
+
+.aboutProject__workTime {
+  display: flex;
+  font-size: 14px;
+}
+
+.aboutProject__figure {
+  margin: 0;
+  text-align: center;
+}
+
+.aboutProject__figure_backend {
+  width: 20%;
+}
+
+.aboutProject__figure_frontend {
+  width: 80%;
+}
+
+.aboutProject__weeks {
+  padding: 9px;
+  margin: 0;
+}
+
+.aboutProject__weeks_bgGreen {
+  background-color: #2be080;
+}
+
+.aboutProject__weeks_bgGrey {
+  background-color: #f2f2f2;
+}
+
+.aboutProject__caption {
+  color: #a0a0a0;
+  margin-top: 14px;
+  line-height: 1.21;
+}

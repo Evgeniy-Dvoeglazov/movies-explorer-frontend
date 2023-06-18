@@ -16,12 +16,12 @@ function AboutProject() {
           </li>
         </ul>
         <div className="aboutProject__workTime">
-          <figure className="aboutProject__figure">
-            <p className="aboutProject__backend">1 неделя</p>
+          <figure className="aboutProject__figure aboutProject__figure_backend">
+            <p className="aboutProject__weeks aboutProject__weeks_bgGreen">1 неделя</p>
             <figcaption className="aboutProject__caption">Back-end</figcaption>
           </figure>
-          <figure className="aboutProject__figure">
-          <p className="aboutProject__frontend">4 недели</p>
+          <figure className="aboutProject__figure aboutProject__figure_frontend">
+          <p className="aboutProject__weeks aboutProject__weeks_bgGrey">4 недели</p>
             <figcaption className="aboutProject__caption">Front-end</figcaption>
           </figure>
         </div>
