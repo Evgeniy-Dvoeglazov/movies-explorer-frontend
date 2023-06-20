@@ -21,8 +21,8 @@ function MoviesCardList() {
         )).slice(0, isButtonActive)
         }
       </ul>
-      {isButtonActive !== movies.length ? <button className="moviesCardList__button" type="button" onClick={addMoreCards}>Ещё</button> : ''}
-    </section >
+      {isButtonActive !== movies.length ? <button className="moviesCardList__button button-opacity" type="button" onClick={addMoreCards}>Ещё</button> : ''}
+    </section>
   );
 }
 

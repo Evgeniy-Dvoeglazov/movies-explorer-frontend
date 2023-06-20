@@ -12,15 +12,6 @@
   box-sizing: border-box;
 }
 
-.header__logo {
-  height: 38px;
-  width: 38px;
-  background-image: url(../../images/logo.svg);
-  background-size: contain;
-  border: none;
-  background-color: transparent;
-}
-
 .header__nav {
   margin: auto 0;
 }

@@ -1,6 +1,15 @@
 @import url(./vendor/normalize.css);
 @import url(./vendor/fonts/inter.css);
 
+.logo {
+  height: 38px;
+  width: 38px;
+  background-image: url(./images/logo.svg);
+  background-size: contain;
+  border: none;
+  background-color: transparent;
+}
+
 .button-opacity {
   transition: opacity .2s linear;
   cursor: pointer;

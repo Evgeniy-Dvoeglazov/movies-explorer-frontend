@@ -8,10 +8,10 @@ function SearchForm() {
       <form className="searchForm__field">
         <img className="searchForm__magnifier" src={magnifier} alt="иконка лупы" />
         <input className="searchForm__input" type="text" placeholder="Фильм" />
-        <button className="searchForm__button button-opacity" type="submit">button</button>
+        <button className="searchForm__button button-opacity" type="submit" aria-label="Кнопка поиска фильма"></button>
       </form>
       <FilterCheckbox />
-    </section >
+    </section>
   );
 }
 

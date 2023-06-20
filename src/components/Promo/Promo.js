@@ -11,10 +11,10 @@ function Promo() {
             </h1>
             <p className="promo__description">Листайте ниже, чтобы узнать больше про этот проект и&nbsp;его создателя.</p>
           </div>
-          <img className="promo__image" src={earth} alt="Логотип проекта" />
+          <img className="promo__image" src={earth} alt="изображение земного шара" />
         </div>
       </div>
-    </section >
+    </section>
   );
 }
 

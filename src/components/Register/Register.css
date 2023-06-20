@@ -1,0 +1,58 @@
+.register__container {
+  max-width: 536px;
+  margin: 0 auto;
+  padding: 70px 70px 70px;
+  box-sizing: border-box;
+}
+
+.register__title {
+  margin: 0;
+  padding: 40px 0;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.register__form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.register__label {
+  margin: 0 0 10px;
+  font-size: 10px;
+  color: #a0a0a0;
+}
+
+.register__input {
+  font-size: 13px;
+  padding: 15px;
+  outline: none;
+  margin: 0 0 20px;
+  background-color: #f9f9f9;
+  border: none;
+  border-radius: 8px;
+}
+
+.register__button {
+  width: 100%;
+  margin: 69px 0 16px;
+  padding: 13px 126px 15px 124px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #3456f3;
+  border: none;
+  border-radius: 3px;
+}
+
+.register__question {
+  font-size: 14px;
+  color: #a0a0a0;
+  text-align: center;
+  margin: 0;
+}
+
+.register__link {
+  color: #3456f3;
+  text-decoration: none;
+}

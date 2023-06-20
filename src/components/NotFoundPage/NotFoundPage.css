@@ -1,0 +1,24 @@
+.notFoundPage__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 246px 70px 60px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.notFoundPage__title {
+  margin: 0;
+  font-size: 140px;
+  font-weight: 400;
+}
+
+.notFoundPage__description {
+  margin: 5px 0 184px;
+  font-size: 16px;
+}
+
+.notFoundPage__link {
+  font-size: 14px;
+  color: #3456f3;
+  text-decoration: none;
+}

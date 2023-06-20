@@ -10,12 +10,12 @@ function Footer() {
         <div className="footer__description">
           <p className="footer__copyright">&copy; {new Date().getFullYear()}</p>
           <nav className="footer__links">
-            <a className="footer__link" href={yandexLink} target="_blank" rel="noopener noreferrer">Яндекс.Практикум</a>
-            <a className="footer__link" href={yandexGithub} target="_blank" rel="noopener noreferrer">Github</a>
+            <a className="footer__link link-opacity" href={yandexLink} target="_blank" rel="noreferrer">Яндекс.Практикум</a>
+            <a className="footer__link link-opacity" href={yandexGithub} target="_blank" rel="noreferrer">Github</a>
           </nav>
         </div>
       </div>
-    </footer >
+    </footer>
   );
 }
 

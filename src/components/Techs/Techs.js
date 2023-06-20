@@ -19,7 +19,7 @@ function Techs() {
           <li className="techItem">mongoDB</li>
         </ul>
       </div>
-    </section >
+    </section>
   );
 }
 

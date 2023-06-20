@@ -26,7 +26,7 @@ function AboutProject() {
           </figure>
         </div>
       </div>
-    </section >
+    </section>
   );
 }
 
