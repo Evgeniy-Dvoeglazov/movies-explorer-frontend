@@ -1,6 +1,6 @@
 import './Footer.css';
 const yandexLink = 'https://practicum.yandex.ru/';
-const githubProfile = 'https://github.com/Evgeniy-Dvoeglazov';
+const yandexGithub = 'https://github.com/yandex-praktikum';
 
 function Footer() {
   return (
@@ -11,7 +11,7 @@ function Footer() {
           <p className="footer__copyright">&copy; {new Date().getFullYear()}</p>
           <nav className="footer__links">
             <a className="footer__link" href={yandexLink} target="_blank" rel="noopener noreferrer">Яндекс.Практикум</a>
-            <a className="footer__link" href={githubProfile} target="_blank" rel="noopener noreferrer">Github</a>
+            <a className="footer__link" href={yandexGithub} target="_blank" rel="noopener noreferrer">Github</a>
           </nav>
         </div>
       </div>

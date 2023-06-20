@@ -2,6 +2,7 @@
   background-color: #073042;
 }
 
+
 .header__container {
   max-width: 1280px;
   margin: 0 auto;
@@ -9,6 +10,15 @@
   justify-content: space-between;
   padding: 18px 70px;
   box-sizing: border-box;
+}
+
+.header__logo {
+  height: 38px;
+  width: 38px;
+  background-image: url(../../images/logo.svg);
+  background-size: contain;
+  border: none;
+  background-color: transparent;
 }
 
 .header__nav {

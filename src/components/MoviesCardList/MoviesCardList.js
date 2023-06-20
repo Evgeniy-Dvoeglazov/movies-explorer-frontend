@@ -1,10 +1,28 @@
 import './MoviesCardList.css';
+import MoviesCard from '../MoviesCard/MoviesCard';
+import movies from '../../utils/config';
+import { useState } from 'react';
 
 function MoviesCardList() {
-  return (
-    <div className="moviesCardList">
+  const [isButtonActive, setIsButtonActive] = useState(6);
 
-    </div >
+  const addMoreCards = () => isButtonActive < movies.length
+    ? setIsButtonActive(isButtonActive + 3)
+    : '';
+
+  return (
+    <section className="moviesCardList">
+      <ul className="moviesCardList__content">
+        {movies.map((movie) => (
+          <MoviesCard
+            key={movie.id}
+            movie={movie}
+          />
+        )).slice(0, isButtonActive)
+        }
+      </ul>
+      {isButtonActive !== movies.length ? <button className="moviesCardList__button" type="button" onClick={addMoreCards}>Ещё</button> : ''}
+    </section >
   );
 }
 

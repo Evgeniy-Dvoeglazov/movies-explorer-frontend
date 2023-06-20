@@ -1,14 +1,14 @@
 import './Header.css';
-import logo from '../../images/logo.svg'
 
 function Header() {
   return (
     <header className="header">
       <div className="header__container">
-        <img className="header__logo" src={logo} alt="Логотип проекта" />
+        <button className="header__logo button-opacity" type="button" aria-label="Кнопка перехода на главную страницу">
+        </button>
         <nav className="header__nav">
-          <button className="header__button" type="button">Регистрация</button>
-          <button className="header__button header__button_green" type="button">Войти</button>
+          <button className="header__button button-opacity" type="button">Регистрация</button>
+          <button className="header__button header__button_green button-opacity" type="button">Войти</button>
         </nav>
       </div>
     </header>

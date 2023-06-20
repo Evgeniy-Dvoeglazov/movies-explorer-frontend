@@ -1,10 +1,11 @@
 import './FilterCheckbox.css';
 
-function switchChackbox() {
-  document.querySelector('.filterCheckbox__label').classList.toggle('filterCheckbox__label_active');
-}
-
 function FilterCheckbox() {
+
+  function switchChackbox() {
+    document.querySelector('.filterCheckbox__label').classList.toggle('filterCheckbox__label_active');
+  }
+
   return (
     <div className="filterCheckbox">
       <label className="filterCheckbox__label">
