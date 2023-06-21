@@ -4,3 +4,10 @@
   padding: 0 70px 20px;
   box-sizing: border-box;
 }
+
+@media screen and (max-width: 1279px) {
+
+  .savedMovies {
+    padding: 0 30px;
+  }
+}

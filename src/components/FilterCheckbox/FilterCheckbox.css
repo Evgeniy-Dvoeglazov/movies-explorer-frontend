@@ -44,3 +44,10 @@
   font-size: 14px;
   line-height: 1.28;
 }
+
+@media screen and (max-width: 1279px) {
+
+  .filterCheckbox {
+    padding: 29px 0 61px;
+  }
+}

@@ -1,0 +1,36 @@
+.form__form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__label {
+  margin: 0 0 10px;
+  font-size: 10px;
+  color: #a0a0a0;
+}
+
+.form__input {
+  font-size: 13px;
+  padding: 15px;
+  outline: none;
+  margin: 0 0 20px;
+  background-color: #f9f9f9;
+  border: none;
+  border-radius: 8px;
+}
+
+.form__button {
+  width: 100%;
+  margin: 69px 0 16px;
+  padding: 13px 126px 15px 124px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #3456f3;
+  border: none;
+  border-radius: 3px;
+}
+
+.form__emptiness {
+  margin-bottom: 90px;
+}

@@ -11,6 +11,7 @@
 }
 
 .navTab__button {
+  font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
   background-color: transparent;
@@ -18,4 +19,28 @@
   padding: 10px 20px;
   border: 1px solid rgba(255, 255, 255, .6);
   border-radius: 3px;
+}
+
+@media screen and (max-width: 1279px) {
+
+  .navTab {
+    padding: 92px 0 76px;
+  }
+
+  .navTab__container {
+    max-width: 1280px;
+    padding: 0 30px;
+  }
+
+  .navTab__button {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 767px) {
+
+  .navTab {
+    padding: 80px 0 30px;
+  }
 }

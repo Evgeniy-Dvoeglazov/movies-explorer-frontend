@@ -1,12 +1,18 @@
 import './SavedMovies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import deleteCardBtnImage from '../../images/button-delete.svg';
 
 function SavedMovies() {
   return (
     <section className="savedMovies">
       <SearchForm />
-      <MoviesCardList />
+      <MoviesCardList
+        buttonText={
+          <img src={deleteCardBtnImage} />
+        }
+        changeButton={false}
+      />
     </section>
   );
 }

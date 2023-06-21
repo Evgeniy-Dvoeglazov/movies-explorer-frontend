@@ -6,6 +6,7 @@
 }
 
 .searchForm__magnifier {
+  margin-left: 6px;
   padding: 5px;
   border: 1px solid #e8e8e8;
   border-radius: 17px;
@@ -35,4 +36,11 @@
   background-repeat: no-repeat;
   background-position: center;
   background-color: #3456f3;
+}
+
+@media screen and (max-width: 1279px) {
+
+  .searchForm__field {
+    padding: 86px 0 15px;
+  }
 }

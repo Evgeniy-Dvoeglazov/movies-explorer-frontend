@@ -6,7 +6,10 @@ function Movies() {
   return (
     <section className="movies">
       <SearchForm />
-      <MoviesCardList />
+      <MoviesCardList
+        buttonText="Сохранить"
+        changeButton={true}
+      />
     </section>
   );
 }

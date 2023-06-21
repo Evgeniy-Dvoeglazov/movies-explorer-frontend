@@ -3,7 +3,7 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 import movies from '../../utils/config';
 import { useState } from 'react';
 
-function MoviesCardList() {
+function MoviesCardList(props) {
   const [isButtonActive, setIsButtonActive] = useState(6);
 
   const addMoreCards = () => isButtonActive < movies.length
@@ -17,6 +17,8 @@ function MoviesCardList() {
           <MoviesCard
             key={movie.id}
             movie={movie}
+            buttonText={props.buttonText}
+            changeButton={props.changeButton}
           />
         )).slice(0, isButtonActive)
         }

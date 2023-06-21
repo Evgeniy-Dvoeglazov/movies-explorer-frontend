@@ -5,7 +5,7 @@ function MoviesCard(props) {
   const [isButtonActive, setIsButtonActive] = useState(false);
 
   function switchButton() {
-    setIsButtonActive(!isButtonActive);
+    return props.changeButton ? setIsButtonActive(!isButtonActive) : false;
   }
 
   return (
@@ -15,7 +15,7 @@ function MoviesCard(props) {
         <p className="moviesCard__duration">{props.movie.duration}</p>
       </div>
       <div className="moviesCard__image" style={{ backgroundImage: `url(${props.movie.link}`}} ></div>
-      <button className={`moviesCard__button button-opacity ${isButtonActive &&'moviesCard__button_active'}`} type="submit" onClick={switchButton}>Сохранить</button>
+      <button className={`moviesCard__button button-opacity ${isButtonActive && 'moviesCard__button_active'}`} type="submit" onClick={switchButton}>{props.buttonText}</button>
     </li>
   );
 }

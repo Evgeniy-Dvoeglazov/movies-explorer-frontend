@@ -1,3 +1,8 @@
+@keyframes aniActive {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
 .moviesCard {
   background-color: #fdfdfd;
   border-radius: 6px;
@@ -33,13 +38,15 @@
 }
 
 .moviesCard__button {
+  width: 100px;
+  height: 29px;
   display: block;
   font-size: 12px;
   line-height: .92;
   background-color: #f9f9f9;
-  padding: 9px 18.5px;
   border-radius: 30px;
   border: none;
+  padding: 0;
   margin: 18px auto;
 }
 
@@ -51,10 +58,14 @@
   background-color: #ff3055;
   opacity: 0;
   animation: aniActive 1.5s forwards;
-  /* transition: opacity .2s linear; */
 }
 
-@keyframes aniActive {
-  0% {opacity: 0}
-  100% {opacity: 1}
+@media screen and (max-width: 1279px) {
+
+  .moviesCardList__content {
+    column-gap: 24px;
+    row-gap: 35px;
+    grid-template-columns: repeat(auto-fit, minmax(342px, 1fr));
+    margin: 70px 0 30px;
+  }
 }

@@ -60,3 +60,10 @@
   color: #3456f3;
   text-decoration: none;
 }
+
+@media screen and (max-width: 1279px) {
+
+  .login__container {
+    padding: 232px 70px;
+  }
+}

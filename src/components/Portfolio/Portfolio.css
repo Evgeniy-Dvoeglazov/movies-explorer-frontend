@@ -40,3 +40,35 @@
   text-decoration: none;
   color: #000;
 }
+
+@media screen and (max-width: 1279px) {
+
+  .portfolio__container {
+    padding: 0 50px 90px;
+  }
+
+  .portfolio__item {
+    font-size: 28px;
+    line-height: 1.78;
+    letter-spacing: -1.12px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+
+  .portfolio__container {
+    padding: 70px 14px;
+  }
+
+  .portfolio__title {
+    font-size: 14px;
+    line-height: 1.43;
+    margin: 0 0 40px;
+  }
+
+  .portfolio__item {
+    font-size: 18px;
+    line-height: 1.55;
+    letter-spacing: -0.72px;
+  }
+}

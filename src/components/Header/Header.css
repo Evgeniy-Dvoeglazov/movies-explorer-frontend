@@ -2,7 +2,6 @@
   background-color: #073042;
 }
 
-
 .header__container {
   max-width: 1280px;
   margin: 0 auto;
@@ -17,6 +16,7 @@
 }
 
 .header__button {
+  font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
   padding: 0;
@@ -31,4 +31,28 @@
   padding: 8px 20px;
   border-radius: 3px;
   margin-left: 30px;
+}
+
+@media screen and (max-width: 1279px) {
+
+  .header__container {
+    padding: 18px 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+
+  .header__container {
+    padding: 18px 14px;
+  }
+
+  .header__button {
+    font-size: 10px;
+    line-height: 1.6;
+  }
+
+  .header__button_green {
+    margin-left: 14px;
+    padding: 5px 12px;
+  }
 }

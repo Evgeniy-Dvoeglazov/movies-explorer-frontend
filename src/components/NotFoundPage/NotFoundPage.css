@@ -22,3 +22,12 @@
   color: #3456f3;
   text-decoration: none;
 }
+
+@media screen and (max-width: 1279px) {
+
+  .notFoundPage__container {
+    padding: 408px 70px 222px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+}
