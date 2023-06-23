@@ -1,0 +1,259 @@
+@keyframes openMenu {
+  0% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 1
+  }
+}
+
+.navigation_isLogin {
+  margin: auto 0;
+  display: flex;
+  width: 1102px;
+  justify-content: space-between;
+}
+
+.navigation__items {
+  display: flex;
+  margin: auto;
+  list-style: none;
+  gap: 16px;
+  padding: 0 0 0 62px;
+  font-size: 13px;
+}
+
+.navigation__link {
+  text-decoration: none;
+  color: #000;
+  font-weight: 400;
+}
+
+.navigation__button {
+  text-decoration: none;
+  color: #fff;
+  border: none;
+  background-color: transparent;
+  font-size: 12px;
+  line-height: 1.33;
+  padding: 0;
+}
+
+.navigation__item:first-child {
+  display: none;
+}
+
+.navigation {
+  margin: auto 0;
+}
+
+.navigation__link_active {
+  font-weight: 500;
+}
+
+.navigation__account-button {
+  font-size: 14px;
+  background-color: #f9f9f9;
+  border: none;
+  border-radius: 20px;
+  width: 100px;
+  padding: 8px 0;
+}
+
+.navigation__menu {
+  display: none;
+}
+
+.navigation__button_green {
+  color: #000;
+  background-color: #2be080;
+  padding: 8px 20px;
+  border-radius: 3px;
+  margin-left: 30px;
+}
+
+.navigation__hamburger {
+  display: none;
+}
+
+@media screen and (max-width: 1279px) {
+
+  .navigation__hamburger {
+    display: flex;
+  }
+
+  .navigation_isLogin {
+    display: none;
+
+  }
+
+  .navigation__hamburger-lines {
+    height: 44px;
+    width: 44px;
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity .2s linear;
+  }
+
+  .navigation__menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 520px;
+    height: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    animation: openMenu .5s forwards;
+    justify-content: space-between;
+  }
+
+  .navigation__items {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    gap: 28px;
+    font-size: 18px;
+    margin: 159px auto 40px;
+  }
+
+  .navigation__link {
+    padding: 0 0 4px;
+    font-weight: 500;
+  }
+
+  .navigation__link_active {
+    border-bottom: 2px solid #000;
+  }
+
+  .navigation__item:first-child {
+    display: flex;
+  }
+
+  .navigation__account-button {
+    margin-bottom: 90px;
+  }
+
+  .navigation__overlay {
+    background: rgba(0, 0, 0, .3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 3;
+  }
+
+  .navigation__checkbox {
+    position: absolute;
+    display: block;
+    height: 44px;
+    width: 44px;
+    top: 15px;
+    right: 25px;
+    z-index: 5;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .navigation__checkbox:hover~.navigation__hamburger-lines {
+    opacity: .8;
+  }
+
+  .navigation__line {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: #000;
+  }
+
+  .line1 {
+    transform-origin: 0% 0%;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .line2 {
+    transition: transform 0.2s ease-in-out;
+    margin: 7px 0;
+  }
+
+  .line3 {
+    transform-origin: 0% 100%;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .navigation__checkbox:checked~.navigation__hamburger-lines .line1 {
+    transform: rotate(45deg) translateY(1px);
+  }
+
+  .navigation__checkbox:checked~.navigation__hamburger-lines .line2 {
+    transform: scaleY(0);
+  }
+
+  .navigation__checkbox:checked~.navigation__hamburger-lines .line3 {
+    transform: rotate(-45deg) translateY(-1px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+
+  .navigation__button {
+    font-size: 10px;
+    line-height: 1.6;
+  }
+
+  .navigation__button_green {
+    margin-left: 14px;
+    padding: 5px 12px;
+  }
+
+  .navigation__menu {
+    width: 320px;
+  }
+
+  .navigation__items {
+    margin: 145px auto 40px;
+    gap: 24px;
+  }
+
+  .navigation__hamburger-lines {
+    height: 43px;
+    width: 40px;
+    right: 14px;
+  }
+
+  .navigation__checkbox {
+    height: 43px;
+    width: 40px;
+    right: 14px;
+  }
+
+  .navigation__line {
+    width: 22px;
+  }
+
+  .line2 {
+    margin: 6px 0;
+  }
+
+  .navigation__account-button {
+    margin-bottom: 46px;
+  }
+
+  .navigation__checkbox:checked~.navigation__hamburger-lines .line1 {
+    transform: rotate(45deg) translateY(2.3px);
+  }
+
+  .navigation__checkbox:checked~.navigation__hamburger-lines .line3 {
+    transform: rotate(-45deg) translateY(-2.3px);
+  }
+}

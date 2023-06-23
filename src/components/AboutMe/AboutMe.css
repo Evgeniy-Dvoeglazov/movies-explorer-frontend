@@ -1,7 +1,7 @@
 .aboutMe__container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 110px 70px 101px;
+  padding: 105px 70px 101px;
   box-sizing: border-box;
 }
 
@@ -55,14 +55,16 @@
 }
 
 .aboutMe__photo {
+  width: 270px;
   height: 327px;
   border-radius: 10px;
+  object-fit: cover;
 }
 
 @media screen and (max-width: 1279px) {
 
   .aboutMe__container {
-    padding: 90px 50px;
+    padding: 93px 50px 91px;
   }
 
   .aboutMe__text {
@@ -87,11 +89,12 @@
   }
 
   .aboutMe__github-link {
-    margin-top: 90px;
+    margin-top: 89px;
   }
 
   .aboutMe__photo {
     height: 307px;
+    width: 255px;
   }
 }
 
@@ -113,17 +116,18 @@
   }
 
   .aboutMe__photo {
+    width: 292px;
     height: 352px;
   }
 
   .aboutMe__name {
     font-size: 30px;
-    margin-top: 40px;
+    margin-top: 42px;
     letter-spacing: -1.2px;
   }
 
   .aboutMe__profession {
-    margin: 20px 0;
+    margin: 24px 0 20px;
     font-size: 11px;
     line-height: 1.45;
   }

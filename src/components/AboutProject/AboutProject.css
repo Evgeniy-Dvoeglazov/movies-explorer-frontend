@@ -1,7 +1,7 @@
 .aboutProject__container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 110px 70px;
+  padding: 111px 70px 119px;
   box-sizing: border-box;
 }
 
@@ -73,18 +73,23 @@
 
 .aboutProject__caption {
   color: #a0a0a0;
-  margin-top: 14px;
+  margin-top: 15px;
   line-height: 1.21;
 }
 
 @media screen and (max-width: 1279px) {
 
   .aboutProject__container {
-    padding: 90px 50px;
+    padding: 92px 50px;
   }
 
   .aboutProject__text {
-    margin: 70px 0 93px;
+    margin: 70px 0 95px;
+  }
+
+  .aboutProject__text-title {
+    line-height: 1.2;
+    margin-bottom: 21px;
   }
 
   .aboutProject__text-description {
@@ -94,6 +99,14 @@
 
   .aboutProject__list-item {
     max-width: 319px;
+  }
+
+  .aboutProject__figure_backend {
+    width: 21%;
+  }
+
+  .aboutProject__figure_frontend {
+    width: 79%;
   }
 }
 
@@ -111,7 +124,12 @@
 
   .aboutProject__text {
     flex-direction: column;
-    margin: 60px 0;
+    margin: 61px 0 60px;
+  }
+
+  .aboutProject__weeks {
+    padding: 11px;
+    margin: 0;
   }
 
   .aboutProject__text-title {
@@ -126,7 +144,7 @@
   }
 
   .aboutProject__list-item:first-child {
-    margin-bottom: 56px;
+    margin-bottom: 57px;
   }
 
   .aboutProject__workTime {

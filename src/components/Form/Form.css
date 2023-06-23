@@ -21,8 +21,8 @@
 
 .form__button {
   width: 100%;
-  margin: 69px 0 16px;
-  padding: 13px 126px 15px 124px;
+  margin: 75px 0 18px;
+  padding: 13px 0 15px;
   color: #fff;
   font-size: 14px;
   font-weight: 500;
@@ -32,5 +32,22 @@
 }
 
 .form__emptiness {
-  margin-bottom: 90px;
+  margin-bottom: 87px;
+}
+
+@media screen and (max-width: 767px) {
+
+  .form__button {
+    margin: 157px 0 14px;
+    padding: 15px 0;
+    font-size: 12px;
+  }
+
+  .form__input {
+    margin: 0 0 23px;
+  }
+
+  .form__emptiness {
+    margin-bottom: 89px;
+  }
 }

@@ -12,43 +12,6 @@
   font-weight: 500;
 }
 
-.login__form-field {
-  display: flex;
-  flex-direction: column;
-}
-
-.login__form-field_invisible {
-  display: none;
-}
-
-.login__label {
-  margin: 0 0 10px;
-  font-size: 10px;
-  color: #a0a0a0;
-}
-
-.login__input {
-  font-size: 13px;
-  padding: 15px;
-  outline: none;
-  margin: 0 0 20px;
-  background-color: #f9f9f9;
-  border: none;
-  border-radius: 8px;
-}
-
-.login__button {
-  width: 100%;
-  margin: 69px 0 16px;
-  padding: 13px 126px 15px 124px;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 500;
-  background-color: #3456f3;
-  border: none;
-  border-radius: 3px;
-}
-
 .login__question {
   font-size: 14px;
   color: #a0a0a0;
@@ -65,5 +28,26 @@
 
   .login__container {
     padding: 232px 70px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+
+  .login__container {
+    padding: 56px 30px 30px;
+  }
+
+  .logo_form {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .login__title {
+    text-align: center;
+    padding: 50px 0 80px;
+  }
+
+  .login__question {
+    font-size: 12px;
   }
 }

@@ -1,15 +1,21 @@
 import './Header.css';
+import Navigation from '../Navigation/Navigation';
+import { useNavigate } from "react-router-dom";
 
-function Header() {
+function Header(props) {
+
+  const navigate = useNavigate();
+
+  const handleClickLogo = () => navigate('/');
+
   return (
-    <header className="header">
+    <header className={props.isMainPage ? "header_dark" : "header"}>
       <div className="header__container">
-        <button className="logo button-opacity" type="button" aria-label="Кнопка перехода на главную страницу">
+        <button className="logo button-opacity" type="button" aria-label="Кнопка перехода на главную страницу" onClick={handleClickLogo}>
         </button>
-        <nav className="header__nav">
-          <button className="header__button button-opacity" type="button">Регистрация</button>
-          <button className="header__button header__button_green button-opacity" type="button">Войти</button>
-        </nav>
+        <Navigation
+          loggedIn={props.loggedIn}
+        />
       </div>
     </header>
   );

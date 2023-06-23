@@ -5,7 +5,7 @@
 .techs__container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 110px 70px;
+  padding: 101px 70px 110px;
   box-sizing: border-box;
 }
 
@@ -94,7 +94,7 @@
   }
 
   .techs__container {
-    padding: 70px 18px;
+    padding: 72px 18px;
   }
 
   .techs__title {
@@ -108,8 +108,9 @@
   }
 
   .techs__text-title {
-    margin: 0 0 24px;
+    margin: 0 0 25px;
     font-size: 30px;
+    letter-spacing: -1px;
   }
 
   .techs__text-description {
@@ -123,5 +124,9 @@
     flex-wrap: wrap;
     margin: 0 auto;
     justify-content: start;
+  }
+
+  .techItem {
+    padding: 21.7px 0;
   }
 }

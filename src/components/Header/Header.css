@@ -1,4 +1,8 @@
 .header {
+  background-color: #fff;
+}
+
+.header_dark {
   background-color: #073042;
 }
 
@@ -9,28 +13,6 @@
   justify-content: space-between;
   padding: 18px 70px;
   box-sizing: border-box;
-}
-
-.header__nav {
-  margin: auto 0;
-}
-
-.header__button {
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.33;
-  padding: 0;
-  background-color: transparent;
-  border: 0;
-  color: #fff;
-}
-
-.header__button_green {
-  color: #000;
-  background-color: #2be080;
-  padding: 8px 20px;
-  border-radius: 3px;
-  margin-left: 30px;
 }
 
 @media screen and (max-width: 1279px) {
@@ -44,15 +26,5 @@
 
   .header__container {
     padding: 18px 14px;
-  }
-
-  .header__button {
-    font-size: 10px;
-    line-height: 1.6;
-  }
-
-  .header__button_green {
-    margin-left: 14px;
-    padding: 5px 12px;
   }
 }

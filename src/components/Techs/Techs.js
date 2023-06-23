@@ -12,7 +12,7 @@ function Techs() {
         <ul className="techsItems">
           <li className="techItem">HTML</li>
           <li className="techItem">CSS</li>
-          <li className="techItem">Js</li>
+          <li className="techItem">JS</li>
           <li className="techItem">React</li>
           <li className="techItem">Git</li>
           <li className="techItem">Express.js</li>

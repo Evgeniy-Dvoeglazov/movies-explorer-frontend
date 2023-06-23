@@ -30,3 +30,16 @@
     margin: 70px 0 30px;
   }
 }
+
+@media screen and (max-width: 767px) {
+
+  .moviesCardList__content {
+    row-gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin: 40px 0 30px;
+  }
+
+  .moviesCardList__button {
+    width: 240px;
+  }
+}

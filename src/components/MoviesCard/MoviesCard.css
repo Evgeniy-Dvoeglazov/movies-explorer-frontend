@@ -1,6 +1,11 @@
-@keyframes aniActive {
-  0% {opacity: 0}
-  100% {opacity: 1}
+@keyframes changeBtnColor {
+  0% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 1
+  }
 }
 
 .moviesCard {
@@ -57,15 +62,37 @@
   background-position: center;
   background-color: #ff3055;
   opacity: 0;
-  animation: aniActive 1.5s forwards;
+  animation: changeBtnColor 1.5s forwards;
 }
 
 @media screen and (max-width: 1279px) {
 
-  .moviesCardList__content {
-    column-gap: 24px;
-    row-gap: 35px;
-    grid-template-columns: repeat(auto-fit, minmax(342px, 1fr));
-    margin: 70px 0 30px;
+  .moviesCard__image {
+    height: 190px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+
+  .moviesCard__header {
+    padding: 14px;
+  }
+
+  .moviesCard__title {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .moviesCard__duration {
+    font-size: 10px;
+    line-height: 1.8;
+  }
+
+  .moviesCard__image {
+    height: 168px;
+  }
+
+  .moviesCard__button {
+    margin: 14px auto;
   }
 }

@@ -8,7 +8,7 @@
 .profile__title {
   font-size: 24px;
   font-weight: 500;
-  margin: 0 auto 123px;
+  margin: 0 auto 126px;
   text-align: center;
 }
 
@@ -47,7 +47,7 @@
 
 .profile__submit-btn {
   display: block;
-  margin: 204px auto 0;
+  margin: 206px auto 0;
   padding: 0;
   font-size: 13px;
   border: none;
@@ -67,10 +67,39 @@
 @media screen and (max-width: 1279px) {
 
   .profile__container {
-    padding: 236px 30px 269px;
+    padding: 237px 30px 269px;
   }
 
   .profile__title {
-    margin: 0 auto 96px;
+    margin: 0 auto 98px;
+  }
+
+  .profile__submit-btn {
+    margin: 197px auto 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+
+  .profile__container {
+    padding: 71px 30px 40px;
+  }
+
+  .profile__form {
+    width: 260px;
+  }
+
+  .profile__title {
+    margin: 0 auto 83px;
+  }
+
+  .profile__submit-btn {
+    margin: 363px auto 0;
+    font-size: 12px;
+  }
+
+  .profile__exit-btn {
+    font-size: 12px;
+    margin-top: 18px;
   }
 }

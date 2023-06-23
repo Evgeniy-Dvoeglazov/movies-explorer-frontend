@@ -1,6 +1,14 @@
 import './Profile.css';
+import { useNavigate } from "react-router-dom";
 
 function Profile() {
+
+  const navigate = useNavigate();
+
+  function handleExitBtn() {
+    navigate('/', { replace: true })
+  }
+
   return (
     <section className="profile">
       <div className="profile__container">
@@ -16,7 +24,7 @@ function Profile() {
           </div>
           <button className="profile__submit-btn button-opacity" type="submit">Редактировать</button>
         </form>
-        <button className="profile__exit-btn button-opacity" type="button">Выйти из&nbsp;аккаунта</button>
+        <button className="profile__exit-btn button-opacity" type="button" onClick={handleExitBtn}>Выйти из&nbsp;аккаунта</button>
       </div>
     </section>
   );

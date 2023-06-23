@@ -44,3 +44,27 @@
     padding: 86px 0 15px;
   }
 }
+
+@media screen and (max-width: 767px) {
+
+  .searchForm__field {
+    padding: 93px 0 8px;
+    margin: 0 4px;
+  }
+
+  .searchForm__magnifier {
+    display: none;
+  }
+
+  .searchForm__input {
+    padding: 6px 0 7px;
+    width: 212px;
+    font-size: 18px;
+    text-align: start;
+    margin: 0;
+  }
+
+  .searchForm__button {
+    padding: 0 17px;
+  }
+}

@@ -1,10 +1,11 @@
 import './NavTab.css';
 
 function NavTab() {
+
   return (
     <section className="navTab">
       <div className="navTab__container">
-        <button className="navTab__button button-opacity" type="button">Узнать больше</button>
+        <a className="navTab__link button-opacity" href="#aboutProject" >Узнать больше</a>
       </div>
     </section>
   );
