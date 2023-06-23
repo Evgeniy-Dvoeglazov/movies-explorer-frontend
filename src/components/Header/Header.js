@@ -6,7 +6,9 @@ function Header(props) {
 
   const navigate = useNavigate();
 
-  const handleClickLogo = () => navigate('/');
+  function handleClickLogo() {
+    navigate('/', { replace: true });
+  }
 
   return (
     <header className={props.isMainPage ? "header_dark" : "header"}>

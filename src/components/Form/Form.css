@@ -4,7 +4,7 @@
 }
 
 .form__label {
-  margin: 0 0 10px;
+  margin: 10px 0 0;
   font-size: 10px;
   color: #a0a0a0;
 }
@@ -13,7 +13,7 @@
   font-size: 13px;
   padding: 15px;
   outline: none;
-  margin: 0 0 20px;
+  margin: 10px 0;
   background-color: #f9f9f9;
   border: none;
   border-radius: 8px;
@@ -21,7 +21,7 @@
 
 .form__button {
   width: 100%;
-  margin: 75px 0 18px;
+  margin: 85px 0 18px;
   padding: 13px 0 15px;
   color: #fff;
   font-size: 14px;
@@ -35,16 +35,30 @@
   margin-bottom: 87px;
 }
 
+.form__error {
+  font-size: 10px;
+  line-height: 1.21;
+  padding: 0 0 10px;
+}
+
+.form__error_visible {
+  color: #ff3055;
+}
+
+.form__input_red {
+  color: #ff3055;
+}
+
 @media screen and (max-width: 767px) {
 
   .form__button {
-    margin: 157px 0 14px;
+    margin: 170px 0 14px;
     padding: 15px 0;
     font-size: 12px;
   }
 
   .form__input {
-    margin: 0 0 23px;
+    margin: 10px 0;
   }
 
   .form__emptiness {
