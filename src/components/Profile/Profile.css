@@ -64,6 +64,20 @@
   background-color: transparent;
 }
 
+.profile__error {
+  font-size: 10px;
+  line-height: 1.21;
+  padding: 0 0 10px;
+}
+
+.profile__error_visible {
+  color: #ff3055;
+}
+
+.profile__input_red {
+  color: #ff3055;
+}
+
 @media screen and (max-width: 1279px) {
 
   .profile__container {

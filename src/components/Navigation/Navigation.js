@@ -49,8 +49,8 @@ function Navigation(props) {
       </nav>
       :
       <>
-        <div className={isMenuOpen ? "navigation__overlay" : "navigation"}>
-          <nav className={(width < 1280 && isMenuOpen) ? "navigation__menu" : "navigation_isLogin"}>
+        <div className={`navigation ${isMenuOpen ? "navigation__overlay" : ""}`}>
+          <nav className={`navigation__isLogin ${(width < 767 && isMenuOpen) ? "navigation__menu" : ""}`}>
             <ul className="navigation__items">
               <li className="navigation__item">
                 <NavLink to="/" className={({ isActive }) => `navigation__link link-opacity ${isActive ? "navigation__link_active" : ""}`}>Главная</NavLink>
@@ -72,6 +72,8 @@ function Navigation(props) {
               <span className="navigation__line line3"></span>
             </div>
           </div>
+        </div>
+        <div>
         </div>
       </>
   );

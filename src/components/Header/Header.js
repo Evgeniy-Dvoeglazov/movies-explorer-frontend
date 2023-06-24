@@ -11,7 +11,7 @@ function Header(props) {
   }
 
   return (
-    <header className={props.isMainPage ? "header_dark" : "header"}>
+    <header className={`header ${props.isMainPage ? "header_dark" : ""}`}>
       <div className="header__container">
         <button className="logo button-opacity" type="button" aria-label="Кнопка перехода на главную страницу" onClick={handleClickLogo}>
         </button>

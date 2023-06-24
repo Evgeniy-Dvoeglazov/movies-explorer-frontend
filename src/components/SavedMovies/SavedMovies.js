@@ -9,7 +9,7 @@ function SavedMovies() {
       <SearchForm />
       <MoviesCardList
         buttonText={
-          <img src={deleteCardBtnImage} />
+          <img className="moviesCardList__image" src={deleteCardBtnImage} />
         }
         changeButton={false}
       />

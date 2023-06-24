@@ -9,17 +9,23 @@ function Portfolio() {
       <div className="portfolio__container">
         <h2 className="portfolio__title">Портфолио</h2>
         <ul className="portfolio__list">
-          <li className="portfolio__item">
-            <p className="portfolio__item-name">Статичный сайт</p>
-            <a className="portfolio__item-link link-opacity" href={staticSite} target="_blank" rel="noreferrer">&#8599;</a>
+          <li>
+            <a className="portfolio__item link-opacity" href={staticSite} target="_blank" rel="noreferrer">
+              <p className="portfolio__item-name">Статичный сайт</p>
+              <p className="portfolio__item-arrow">&#8599;</p>
+            </a>
           </li>
-          <li className="portfolio__item">
-            <p className="portfolio__item-name">Адаптивный сайт</p>
-            <a className="portfolio__item-link link-opacity" href={adaptiveSite} target="_blank" rel="noreferrer">&#8599;</a>
+          <li>
+            <a className="portfolio__item link-opacity" href={adaptiveSite} target="_blank" rel="noreferrer">
+              <p className="portfolio__item-name">Адаптивный сайт</p>
+              <p className="portfolio__item-arrow">&#8599;</p>
+            </a>
           </li>
-          <li className="portfolio__item">
-            <p className="portfolio__item-name">Одностраничное приложение</p>
-            <a className="portfolio__item-link link-opacity" href={singlePageApp} target="_blank" rel="noreferrer">&#8599;</a>
+          <li>
+            <a className="portfolio__item link-opacity portfolio__item_last" href={singlePageApp} target="_blank" rel="noreferrer">
+              <p className="portfolio__item-name">Одностраничное приложение</p>
+              <p className="portfolio__item-arrow">&#8599;</p>
+            </a>
           </li>
         </ul>
       </div>

@@ -120,13 +120,18 @@
   }
 
   .techsItems {
-    width: 178px;
     flex-wrap: wrap;
     margin: 0 auto;
-    justify-content: start;
   }
 
   .techItem {
     padding: 21.7px 0;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .techsItems {
+    width: 178px;
+    justify-content: start;
   }
 }

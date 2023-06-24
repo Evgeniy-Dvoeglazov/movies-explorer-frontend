@@ -30,20 +30,17 @@
   justify-content: space-between;
   border-bottom: 1px solid #e8e8e8;
   padding-bottom: 19px;
+  text-decoration: none;
+  color: #000;
 }
 
-.portfolio__item:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.portfolio__item-name {
+.portfolio__item-name, .portfolio__item-arrow {
   margin: 0;
 }
 
-.portfolio__item-link {
-  text-decoration: none;
-  color: #000;
+.portfolio__item_last {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 @media screen and (max-width: 1279px) {

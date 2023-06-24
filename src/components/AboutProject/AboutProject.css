@@ -98,7 +98,7 @@
   }
 
   .aboutProject__list-item {
-    max-width: 319px;
+    min-width: 319px;
   }
 
   .aboutProject__figure_backend {
@@ -107,6 +107,10 @@
 
   .aboutProject__figure_frontend {
     width: 79%;
+  }
+
+  .aboutProject__list-item:first-child {
+    margin-right: 30px;
   }
 }
 
@@ -141,6 +145,10 @@
   .aboutProject__text-description {
     font-size: 11px;
     line-height: 1.45;
+  }
+
+  .aboutProject__list-item {
+    min-width: 284px;
   }
 
   .aboutProject__list-item:first-child {

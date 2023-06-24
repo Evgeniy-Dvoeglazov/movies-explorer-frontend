@@ -8,10 +8,13 @@
   }
 }
 
-.navigation_isLogin {
+.navigation {
+  margin: auto 0;
+}
+
+.navigation__isLogin {
   margin: auto 0;
   display: flex;
-  width: 1102px;
   justify-content: space-between;
 }
 
@@ -20,7 +23,7 @@
   margin: auto;
   list-style: none;
   gap: 16px;
-  padding: 0 0 0 62px;
+  padding: 0 38px 0 0;
   font-size: 13px;
 }
 
@@ -44,15 +47,14 @@
   display: none;
 }
 
-.navigation {
-  margin: auto 0;
-}
-
 .navigation__link_active {
   font-weight: 500;
 }
 
 .navigation__account-button {
+  position: absolute;
+  right: 70px;
+  top: 21px;
   font-size: 14px;
   background-color: #f9f9f9;
   border: none;
@@ -79,11 +81,18 @@
 
 @media screen and (max-width: 1279px) {
 
+  .navigation__account-button {
+    right: 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+
   .navigation__hamburger {
     display: flex;
   }
 
-  .navigation_isLogin {
+  .navigation__isLogin {
     display: none;
 
   }
@@ -141,6 +150,9 @@
 
   .navigation__account-button {
     margin-bottom: 90px;
+    position: relative;
+    top: 0;
+    right: 0;
   }
 
   .navigation__overlay {
