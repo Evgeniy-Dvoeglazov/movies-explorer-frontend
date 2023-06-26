@@ -1,0 +1,56 @@
+import './Profile.css';
+import { useNavigate } from "react-router-dom";
+import { useForm } from 'react-hook-form';
+
+function Profile() {
+
+  const { register, formState: { errors, isValid }, getValues } = useForm({ mode: 'onChange', criteriaMode: 'all' });
+
+  const navigate = useNavigate();
+
+  const errorClassname = (name) => `profile__error ${errors[name] ? 'profile__error_visible' : ''}`;
+
+  function handleExitBtn() {
+    navigate('/', { replace: true })
+  }
+
+  return (
+    <section className="profile">
+      <div className="profile__container">
+        <h2 className="profile__title">Привет, Евгений</h2>
+        <form className="profile__form" noValidate>
+          <div className="profile__form-field">
+            <label className="profile__label">Имя</label>
+            <input className={`profile__input ${errors.name ? 'profile__input_red' : ''}`} name="name" type="text" defaultValue="Евгений"
+              {...register('name', {
+                required: 'Заполните это поле.',
+                minLength: {
+                  value: 2,
+                  message: 'Текст должен быть не короче 2 символов.'
+                }
+              })}
+            />
+          </div>
+          {errors.name && <span className={errorClassname('name')}>{errors.name.message}</span>}
+          <div className="profile__form-field">
+            <label className="profile__label">E-mail</label>
+            <input className={`profile__input ${errors.email ? 'profile__input_red' : ''}`} name="email" type="email" defaultValue="jindv@yandex.ru"
+              {...register('email', {
+                required: 'Заполните это поле.',
+                pattern: {
+                  value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                  message: 'Введите Email'
+                }
+              })}
+            />
+          </div>
+          {errors.email && <span className={errorClassname('email')}>{errors.email.message}</span>}
+          <button className="profile__submit-btn button-opacity" type="submit">Редактировать</button>
+        </form>
+        <button className="profile__exit-btn button-opacity" type="button" onClick={handleExitBtn}>Выйти из&nbsp;аккаунта</button>
+      </div>
+    </section>
+  );
+}
+
+export default Profile;

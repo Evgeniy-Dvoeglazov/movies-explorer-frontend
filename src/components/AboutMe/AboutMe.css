@@ -1,0 +1,148 @@
+.aboutMe__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 105px 70px 101px;
+  box-sizing: border-box;
+}
+
+.aboutMe__title {
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -.88px;
+  margin: 0;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #000;
+}
+
+.aboutMe__content {
+  display: flex;
+  justify-content: space-between;
+  margin: 66px 0 0;
+}
+
+.aboutMe__text {
+  max-width: 600px;
+}
+
+.aboutMe__name {
+  font-size: 50px;
+  line-height: 1.16;
+  font-weight: 400;
+  letter-spacing: -2px;
+  margin: 0;
+}
+
+.aboutMe__profession {
+  margin: 18px 0 26px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11;
+}
+
+.aboutMe__description {
+  font-size: 14px;
+  line-height: 1.57;
+  margin: 0;
+}
+
+.aboutMe__github-link {
+  font-weight: 500;
+  display: block;
+  margin-top: 100px;
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+}
+
+.aboutMe__photo {
+  width: 270px;
+  height: 327px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 1279px) {
+
+  .aboutMe__container {
+    padding: 93px 50px 91px;
+  }
+
+  .aboutMe__text {
+    min-width: 364px;
+  }
+
+  .aboutMe__description {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-right: 30px;
+  }
+
+  .aboutMe__name {
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  .aboutMe__profession {
+    margin: 16px 0 20px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .aboutMe__github-link {
+    margin-top: 89px;
+  }
+
+  .aboutMe__photo {
+    height: 307px;
+    width: 255px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+
+  .aboutMe__container {
+    padding: 70px 14px;
+  }
+
+  .aboutMe__title {
+    font-size: 18px;
+    letter-spacing: -.72px;
+    padding-bottom: 28px;
+  }
+
+  .aboutMe__content {
+    flex-direction: column-reverse;
+    margin: 60px 0 0;
+  }
+
+  .aboutMe__text {
+    min-width: 292px;
+  }
+
+  .aboutMe__photo {
+    width: 292px;
+    height: 352px;
+  }
+
+  .aboutMe__name {
+    font-size: 30px;
+    margin-top: 42px;
+    letter-spacing: -1.2px;
+  }
+
+  .aboutMe__profession {
+    margin: 24px 0 20px;
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .aboutMe__description {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .aboutMe__github-link {
+    margin-top: 40px;
+  }
+}
