@@ -1,5 +1,5 @@
 import './Navigation.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate, NavLink } from "react-router-dom";
 
 function Navigation(props) {
@@ -7,20 +7,6 @@ function Navigation(props) {
   const navigate = useNavigate();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [width, setWidth] = useState(window.innerWidth);
-
-  //Создаем эффект, который будет отслеживать ширину окна.
-  //Далее мы сможем использовать это, чтобы дополнительный блок меню в шапке исчезал при увеличении ширины окна
-
-  useEffect(() => {
-    const handleResize = (event) => {
-      setWidth(event.target.innerWidth);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
   function openMenu() {
     setIsMenuOpen(!isMenuOpen);
@@ -50,7 +36,7 @@ function Navigation(props) {
       :
       <>
         <div className={`navigation ${isMenuOpen ? "navigation__overlay" : ""}`}>
-          <nav className={`navigation__isLogin ${(width < 767 && isMenuOpen) ? "navigation__menu" : ""}`}>
+          <nav className={`navigation__isLogin ${(props.width < 767 && isMenuOpen) ? "navigation__menu" : ""}`}>
             <ul className="navigation__items">
               <li className="navigation__item">
                 <NavLink to="/" className={({ isActive }) => `navigation__link link-opacity ${isActive ? "navigation__link_active" : ""}`}>Главная</NavLink>

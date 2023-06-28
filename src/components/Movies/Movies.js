@@ -2,13 +2,20 @@ import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
-function Movies() {
+function Movies(props) {
   return (
     <section className="movies">
-      <SearchForm />
+      <SearchForm
+      searchMovies={props.searchMovies}
+      />
       <MoviesCardList
         buttonText="Сохранить"
         changeButton={true}
+        movies={props.movies}
+        saveMovie={props.saveMovie}
+        addMoreMovies={props.addMoreMovies}
+        isLoading={props.isLoading}
+        serverError={props.serverError}
       />
     </section>
   );
