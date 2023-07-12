@@ -5,6 +5,16 @@ import Preloader from '../Preloader/Preloader';
 function MoviesCardList(props) {
   const foundMovies = JSON.parse(localStorage.getItem('foundMovies'));
 
+  // function moviesList() {
+  //   if (shortMoviesActive && props.isSavedMovie) {
+  //     return foundMovies.filter(movie => movie.duration <= 40);
+  //   } else
+  //   if (shortMoviesActive) {
+  //     return foundMovies.filter(movie => movie.duration <= 40);
+  //   }
+  //   return props.movies;
+  // }
+
   if (props.isLoading) {
     return (
       <Preloader />
@@ -26,18 +36,21 @@ function MoviesCardList(props) {
   return (
     <section className="moviesCardList">
       <ul className="moviesCardList__content">
-        {foundMovies.map((movie) => (
+        {props.movies.map((movie) => (
           <MoviesCard
-            key={movie.id}
+            key={movie.movieId || movie.id}
             movie={movie}
             buttonText={props.buttonText}
             changeButton={props.changeButton}
             saveMovie={props.saveMovie}
+            onCardDelete={props.onCardDelete}
+            isSavedMovie={props.isSavedMovie}
+            isSaved={props.isSaved}
           />
         ))
         }
       </ul>
-      {foundMovies.length !== props.movies.length && props.movies.length !== 0 ? <button className="moviesCardList__button button-opacity" type="button" onClick={props.addMoreMovies}>Ещё</button> : ''}
+      {foundMovies.length !== props.movies.length && props.movies.length !== 0 && !props.isSavedMovie ? <button className="moviesCardList__button button-opacity" type="button" onClick={props.addMoreMovies}>Ещё</button> : ''}
     </section>
   );
 }

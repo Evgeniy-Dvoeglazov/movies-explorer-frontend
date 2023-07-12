@@ -1,27 +1,42 @@
 import './Profile.css';
 import { useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form';
+import { useContext, useEffect } from 'react';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-function Profile() {
+function Profile(props) {
 
-  const { register, formState: { errors, isValid }, getValues } = useForm({ mode: 'onChange', criteriaMode: 'all' });
+  const currentUser = useContext(CurrentUserContext);
 
-  const navigate = useNavigate();
+  const { register, formState: { errors, isValid }, getValues, setValue } = useForm({ mode: 'onChange', criteriaMode: 'all' });
 
   const errorClassname = (name) => `profile__error ${errors[name] ? 'profile__error_visible' : ''}`;
 
   function handleExitBtn() {
-    navigate('/', { replace: true })
+    props.onSignOut();
   }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    props.onUpdateUser({
+      name: getValues('name'),
+      email: getValues('email')
+    });
+  }
+
+  useEffect(() => {
+    setValue('name', currentUser.name);
+    setValue('email', currentUser.email);
+  }, [currentUser]);
 
   return (
     <section className="profile">
       <div className="profile__container">
         <h2 className="profile__title">Привет, Евгений</h2>
-        <form className="profile__form" noValidate>
+        <form className="profile__form" onSubmit={handleSubmit} noValidate>
           <div className="profile__form-field">
             <label className="profile__label">Имя</label>
-            <input className={`profile__input ${errors.name ? 'profile__input_red' : ''}`} name="name" type="text" defaultValue="Евгений"
+            <input className={`profile__input ${errors.name ? 'profile__input_red' : ''}`} name="name" type="text"
               {...register('name', {
                 required: 'Заполните это поле.',
                 minLength: {
@@ -34,7 +49,7 @@ function Profile() {
           {errors.name && <span className={errorClassname('name')}>{errors.name.message}</span>}
           <div className="profile__form-field">
             <label className="profile__label">E-mail</label>
-            <input className={`profile__input ${errors.email ? 'profile__input_red' : ''}`} name="email" type="email" defaultValue="jindv@yandex.ru"
+            <input className={`profile__input ${errors.email ? 'profile__input_red' : ''}`} name="email" type="email"
               {...register('email', {
                 required: 'Заполните это поле.',
                 pattern: {
@@ -45,7 +60,7 @@ function Profile() {
             />
           </div>
           {errors.email && <span className={errorClassname('email')}>{errors.email.message}</span>}
-          <button className="profile__submit-btn button-opacity" type="submit">Редактировать</button>
+          <button className={`profile__submit-btn button-opacity ${isValid ? '' : 'profile__submit-btn_disabled'}`} disabled={props.isLoading} type="submit">Редактировать</button>
         </form>
         <button className="profile__exit-btn button-opacity" type="button" onClick={handleExitBtn}>Выйти из&nbsp;аккаунта</button>
       </div>

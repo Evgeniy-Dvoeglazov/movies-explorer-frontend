@@ -54,6 +54,11 @@
   background-color: transparent;
 }
 
+.profile__submit-btn_disabled {
+  pointer-events: none;
+  opacity: .2;
+}
+
 .profile__exit-btn {
   display: block;
   margin: 16px auto 0;

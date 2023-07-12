@@ -3,7 +3,7 @@ import Form from '../Form/Form';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
-function Register() {
+function Register(props) {
 
   const { register, formState: { errors, isValid }, getValues } = useForm({ mode: 'onChange', criteriaMode: 'all' });
 
@@ -11,8 +11,9 @@ function Register() {
 
   const errorClassname = (name) => `form__error ${errors[name] ? 'form__error_visible' : ''}`;
 
-  function handleSubmit() {
-    navigate('/signin', { replace: true });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.onRegister(getValues('name'), getValues('email'), getValues('password'));
   }
 
   function handleClickLogo() {
@@ -28,6 +29,7 @@ function Register() {
         <Form
           buttonText="Зарегистрироваться"
           onSubmit={handleSubmit}
+          isValid={isValid}
           children={
             <>
               <div className="form__form-field">

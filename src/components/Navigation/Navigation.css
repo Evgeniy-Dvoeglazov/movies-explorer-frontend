@@ -27,9 +27,16 @@
   font-size: 13px;
 }
 
+.navigation__link_whiteText {
+  color: #fff;
+}
+
+.navigation__link_blackText {
+  color: #000;
+}
+
 .navigation__link {
   text-decoration: none;
-  color: #000;
   font-weight: 400;
 }
 
@@ -185,7 +192,14 @@
     display: block;
     width: 28px;
     height: 3px;
-    background: #000;
+  }
+
+  .navigation__line_whiteColor {
+    background-color: #fff;
+  }
+
+  .navigation__line_blackColor {
+    background-color: #000;
   }
 
   .line1 {

@@ -3,7 +3,7 @@ import Form from '../Form/Form';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
-function Login() {
+function Login(props) {
 
   const { register, formState: { errors, isValid }, getValues } = useForm({ mode: 'onChange', criteriaMode: 'all' });
 
@@ -11,8 +11,12 @@ function Login() {
 
   const errorClassname = (name) => `form__error ${errors[name] ? 'form__error_visible' : ''}`;
 
-  function handleSubmit() {
-    navigate('/movies', { replace: true });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!getValues('email') || !getValues('password')) {
+      return;
+    }
+    props.onLogin(getValues('password'), getValues('email'));
   }
 
   function handleClickLogo() {
@@ -28,6 +32,7 @@ function Login() {
         <Form
           buttonText="Войти"
           onSubmit={handleSubmit}
+          isValid={isValid}
           children={
             <>
               <div className="form__form-field">

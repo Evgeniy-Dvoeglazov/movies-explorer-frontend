@@ -16,6 +16,9 @@ function Movies(props) {
         addMoreMovies={props.addMoreMovies}
         isLoading={props.isLoading}
         serverError={props.serverError}
+        isSavedMovie={false}
+        isSaved={props.isSaved}
+        onCardDelete={props.onCardDelete}
       />
     </section>
   );
