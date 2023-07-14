@@ -1,7 +1,5 @@
 export const BASE_URL = 'https://api.movies.dvoeglazov.nomoredomains.rocks';
 
-// export const BASE_URL = 'http://localhost:3001';
-
 export const register = (name, email, password) => {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',

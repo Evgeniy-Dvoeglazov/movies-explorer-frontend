@@ -56,17 +56,6 @@ function App() {
       });
   }
 
-  // function getSavedMovies() {
-  //   apiMain.getMovies()
-  //     .then((res) => {
-  //       setSavedMovies([...res]);
-  //       setIsSavedMovie(true);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     })
-  // }
-
   // Получаем карточки во вкладке "избранное"
   useEffect(() => {
     if (loggedIn) {
@@ -82,31 +71,20 @@ function App() {
   }, [loggedIn, movies]);
 
   useEffect(() => {
-    tokenCheck();
+    apiMain.getUserInfo()
+      .then((res) => {
+        if (res) {
+          setLoggedIn(true);
+          setCurrentUser(res);
+          navigate(location.pathname, { replace: true });
+          // getSavedMovies();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        navigate("/signin", { replace: true })
+      });
   }, []);
-
-  // useEffect(() => {
-  //     navigate(location.pathname, { replace: true });
-  // }, []);
-
-  function tokenCheck() {
-    const jwt = localStorage.getItem('token');
-    if (jwt) {
-      apiMain.getUserInfo(jwt)
-        .then((res) => {
-          if (res) {
-            setLoggedIn(true);
-            setCurrentUser(res);
-            navigate(location.pathname, { replace: true });
-            // getSavedMovies();
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          navigate("/signin", { replace: true })
-        });
-    }
-  }
 
   // Получаем карточки во влкадке movies в зависимости от ширины экрана
   function changeMoviesCardListLength() {
@@ -235,7 +213,6 @@ function App() {
     if (currentUser.name !== name || currentUser.email !== email) {
       apiMain.setUserInfo({ name, email })
         .then((res) => {
-          console.log(res);
           setCurrentUser(res);
           setSuccessChangeProfile('Данные успешно сохранены');
         })
@@ -245,7 +222,6 @@ function App() {
     } else {
       setSuccessChangeProfile('Указыны текущие данные. Необходимо их изменить');
     }
-
   }
 
   return (
