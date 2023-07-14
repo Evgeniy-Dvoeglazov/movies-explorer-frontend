@@ -40,6 +40,13 @@
   margin-bottom: 87px;
 }
 
+.form__submit-error {
+  display: block;
+  font-size: 16px;
+  text-align: center;
+  color: #ff3055;
+}
+
 .form__error {
   font-size: 10px;
   line-height: 1.21;

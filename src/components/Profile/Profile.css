@@ -70,6 +70,7 @@
 }
 
 .profile__error {
+  display: block;
   font-size: 10px;
   line-height: 1.21;
   padding: 0 0 10px;
@@ -81,6 +82,16 @@
 
 .profile__input_red {
   color: #ff3055;
+}
+
+.profile__submit-error {
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  opacity: .8;
+  line-height: 1.21;
+  padding: 40px 0 0 0;
+  color: #000;
 }
 
 @media screen and (max-width: 1279px) {

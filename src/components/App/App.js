@@ -10,7 +10,7 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
-import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { apiMovies } from '../../utils/MoviesApi';
 import { apiMain } from '../../utils/MainApi';
 import * as auth from '../../utils/auth.js';
@@ -26,13 +26,13 @@ function App() {
   const [serverError, setServerError] = useState(false);
   const [moreMovies, setMoreMovies] = useState(0);
   const [isSavedMovie, setIsSavedMovie] = useState(false);
+  const [successChangeProfile, setSuccessChangeProfile] = useState('');
 
   const navigate = useNavigate();
   const location = useLocation();
   const [width, setWidth] = useState(window.innerWidth);
 
   //Создаем эффект, который будет отслеживать ширину окна.
-  //Далее мы сможем использовать это, чтобы дополнительный блок меню в шапке исчезал при увеличении ширины окна
 
   useEffect(() => {
     const handleResize = (event) => {
@@ -45,20 +45,30 @@ function App() {
     };
   }, [width]);
 
-  useEffect(() => {
-    if (loggedIn) {
-      apiMain.getUserInfo()
-        .then((res) => {
-          setCurrentUser(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [loggedIn]);
+  // Получаем данные пользователя
+  function getUserInfo() {
+    apiMain.getUserInfo()
+      .then((res) => {
+        setCurrentUser(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
+  // function getSavedMovies() {
+  //   apiMain.getMovies()
+  //     .then((res) => {
+  //       setSavedMovies([...res]);
+  //       setIsSavedMovie(true);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     })
+  // }
+
+  // Получаем карточки во вкладке "избранное"
   useEffect(() => {
-    setIsLoading(true);
     if (loggedIn) {
       apiMain.getMovies()
         .then((res) => {
@@ -68,9 +78,6 @@ function App() {
         .catch((err) => {
           console.log(err);
         })
-        .finally(() => {
-          setIsLoading(false);
-        });
     }
   }, [loggedIn, movies]);
 
@@ -85,47 +92,50 @@ function App() {
   function tokenCheck() {
     const jwt = localStorage.getItem('token');
     if (jwt) {
-      setIsLoading(true);
-      auth.getContent(jwt)
+      apiMain.getUserInfo(jwt)
         .then((res) => {
           if (res) {
             setLoggedIn(true);
+            setCurrentUser(res);
             navigate(location.pathname, { replace: true });
+            // getSavedMovies();
           }
         })
         .catch((err) => {
           console.log(err);
           navigate("/signin", { replace: true })
-        })
-        .finally(() => {
-          setIsLoading(false);
         });
     }
   }
 
+  // Получаем карточки во влкадке movies в зависимости от ширины экрана
   function changeMoviesCardListLength() {
     const foundMovies = JSON.parse(localStorage.getItem('foundMovies'));
-
-    if (width > 768) {
+    if (foundMovies === null) {
+      return
+    }
+    if (width > 1133) {
       setMovies(foundMovies.slice(0, 12));
       setMoreMovies(3);
     }
-    if (width <= 768) {
+    if (width <= 1133) {
       setMovies(foundMovies.slice(0, 8));
       setMoreMovies(2);
     }
-    if (width <= 480) {
+    if (width <= 643) {
       setMovies(foundMovies.slice(0, 5));
       setMoreMovies(2);
     }
   }
 
+  // функция добавления дополнительных видео на кнопку "еще"
   function addMoreMovies() {
     const foundMovies = JSON.parse(localStorage.getItem('foundMovies'));
 
     setMovies(foundMovies.slice(0, movies.length + moreMovies));
   }
 
+  // поиск фильмов
   function searchMovies(movieInputName, shortMoviesActive) {
     setIsLoading(true);
 
@@ -151,6 +161,7 @@ function App() {
     return savedMovies.some((savedMovie) => savedMovie.movieId === movie.id && savedMovie.owner === currentUser._id);
   }
 
+  // сохранение фильмов
   function saveMovie(movie) {
 
     apiMain.saveMovie(movie)
@@ -164,33 +175,38 @@ function App() {
       });
   }
 
+  // регистрация
   function handleRegister(name, email, password) {
     auth.register(name, email, password)
       .then((res) => {
         if (res) {
-          navigate('/signin', { replace: true });
+          handleLogin(password, email);
         }
       })
       .catch((err) => {
+        setServerError(true);
         console.log(err);
       });
   }
 
+  // авторизация
   function handleLogin(password, email) {
     auth.authorize(password, email)
       .then((data) => {
         if (data.token) {
           setLoggedIn(true);
           navigate('/movies', { replace: true });
+          getUserInfo();
         }
       })
       .catch((err) => {
+        setServerError(true);
         console.log(err);
       });
   }
 
+  // выход из профиля
   function handleLogout() {
-    localStorage.removeItem('token');
     auth.logOut()
       .then(() => {
         navigate('/signin', { replace: true });
@@ -201,27 +217,35 @@ function App() {
       });
   }
 
+  // удаление фильма из избранного
   function handleDeleteMovie(movie) {
     const deleteMovie = savedMovies.find(savedMovie => savedMovie.movieId === (movie.id || savedMovie.movieId) && savedMovie.owner === currentUser._id);
 
     apiMain.removeMovie(deleteMovie._id)
       .then(() => {
-        setMovies((movies) => movies.filter((c) => c._id !== deleteMovie._id));
+        setSavedMovies((movies) => movies.filter((c) => c._id !== deleteMovie._id));
       })
       .catch((err) => {
         console.log(err);
       });
   }
 
-  function handleUserUpdate({name, email}) {
-    apiMain.setUserInfo({name, email})
-    .then((res) => {
-      console.log(res);
-      setCurrentUser(res);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  // изменение информации в профиле
+  function handleUserUpdate({ name, email }) {
+    if (currentUser.name !== name || currentUser.email !== email) {
+      apiMain.setUserInfo({ name, email })
+        .then((res) => {
+          console.log(res);
+          setCurrentUser(res);
+          setSuccessChangeProfile('Данные успешно сохранены');
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      setSuccessChangeProfile('Указыны текущие данные. Необходимо их изменить');
+    }
+
   }
 
   return (
@@ -272,7 +296,6 @@ function App() {
                 element={SavedMovies}
                 searchMovies={searchMovies}
                 loggedIn={loggedIn}
-                isLoading={isLoading}
                 serverError={serverError}
                 savedMovies={savedMovies}
                 isSavedMovie={isSavedMovie}
@@ -291,17 +314,23 @@ function App() {
               />
               <Profile
                 onSignOut={handleLogout}
-                isLoading={isLoading}
                 onUpdateUser={handleUserUpdate}
+                successChangeProfile={successChangeProfile}
               />
             </>
           } />
           <Route path="/signin" element={
-            <Login onLogin={handleLogin} />
+            <Login
+              onLogin={handleLogin}
+              serverError={serverError}
+            />
           }
           />
           <Route path="/signup" element={
-            <Register onRegister={handleRegister} />
+            <Register
+              onRegister={handleRegister}
+              serverError={serverError}
+            />
           } />
           <Route path="*" element={
             <NotFoundPage />

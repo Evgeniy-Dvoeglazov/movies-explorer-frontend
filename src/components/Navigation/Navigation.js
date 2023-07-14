@@ -39,13 +39,13 @@ function Navigation(props) {
           <nav className={`navigation__isLogin ${(props.width < 767 && isMenuOpen) ? "navigation__menu" : ""}`}>
             <ul className="navigation__items">
               <li className="navigation__item">
-                <NavLink to="/" className={({ isActive }) => `navigation__link link-opacity ${isActive ? "navigation__link_active" : ""}`}>Главная</NavLink>
+                <NavLink to="/" className={({ isActive }) => `navigation__link navigation__link_blackText link-opacity ${isActive ? "navigation__link_active" : ""}`}>Главная</NavLink>
               </li>
               <li>
-                <NavLink to="/movies" className={({ isActive }) => `navigation__link link-opacity ${isActive ? "navigation__link_active" : ""} ${props.isMainPage ? "navigation__link_whiteText" : "navigation__link_blackText"}`}>Фильмы</NavLink>
+                <NavLink to="/movies" className={({ isActive }) => `navigation__link link-opacity ${isActive ? "navigation__link_active" : ""} ${props.isMainPage ? "navigation__link_whiteText" : "navigation__link_blackText"} ${isMenuOpen ? "navigation__link_blackText" : ""}`}>Фильмы</NavLink>
               </li>
               <li>
-                <NavLink to="/saved-movies" className={({ isActive }) => `navigation__link link-opacity ${isActive ? "navigation__link_active" : ""} ${props.isMainPage ? "navigation__link_whiteText" : "navigation__link_blackText"}`}>Сохраненные фильмы</NavLink>
+                <NavLink to="/saved-movies" className={({ isActive }) => `navigation__link link-opacity ${isActive ? "navigation__link_active" : ""} ${props.isMainPage ? "navigation__link_whiteText" : "navigation__link_blackText"} ${isMenuOpen ? "navigation__link_blackText" : ""}`}>Сохраненные фильмы</NavLink>
               </li>
             </ul>
             <button className="navigation__account-button button-opacity" type="button" onClick={handleProfileBtn}>Аккаунт</button>

@@ -1,5 +1,5 @@
 const apiMainConfig = {
-  baseUrl: 'http://localhost:3001',
+  baseUrl: 'https://api.movies.dvoeglazov.nomoredomains.rocks',
   headers: {
     'Content-Type': 'application/json',
   }

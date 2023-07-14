@@ -30,6 +30,7 @@ function Login(props) {
         </button>
         <h2 className="login__title">Рады видеть!</h2>
         <Form
+          serverError={props.serverError}
           buttonText="Войти"
           onSubmit={handleSubmit}
           isValid={isValid}

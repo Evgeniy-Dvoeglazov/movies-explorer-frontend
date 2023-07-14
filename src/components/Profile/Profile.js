@@ -1,5 +1,4 @@
 import './Profile.css';
-import { useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form';
 import { useContext, useEffect } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
@@ -32,7 +31,7 @@ function Profile(props) {
   return (
     <section className="profile">
       <div className="profile__container">
-        <h2 className="profile__title">Привет, Евгений</h2>
+        <h2 className="profile__title">Привет, {currentUser.name}</h2>
         <form className="profile__form" onSubmit={handleSubmit} noValidate>
           <div className="profile__form-field">
             <label className="profile__label">Имя</label>
@@ -60,6 +59,7 @@ function Profile(props) {
             />
           </div>
           {errors.email && <span className={errorClassname('email')}>{errors.email.message}</span>}
+          <span className='profile__submit-error'>{props.successChangeProfile || ''}</span>
           <button className={`profile__submit-btn button-opacity ${isValid ? '' : 'profile__submit-btn_disabled'}`} disabled={props.isLoading} type="submit">Редактировать</button>
         </form>
         <button className="profile__exit-btn button-opacity" type="button" onClick={handleExitBtn}>Выйти из&nbsp;аккаунта</button>

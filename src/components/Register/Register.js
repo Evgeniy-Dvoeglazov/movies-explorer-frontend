@@ -27,6 +27,7 @@ function Register(props) {
         </button>
         <h2 className="register__title">Добро пожаловать!</h2>
         <Form
+          serverError={props.serverError}
           buttonText="Зарегистрироваться"
           onSubmit={handleSubmit}
           isValid={isValid}

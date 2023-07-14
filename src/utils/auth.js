@@ -1,6 +1,6 @@
-// export const BASE_URL = 'https://api.movies.dvoeglazov.nomoredomains.rocks';
+export const BASE_URL = 'https://api.movies.dvoeglazov.nomoredomains.rocks';
 
-export const BASE_URL = 'http://localhost:3001';
+// export const BASE_URL = 'http://localhost:3001';
 
 export const register = (name, email, password) => {
   return fetch(`${BASE_URL}/signup`, {
@@ -42,16 +42,16 @@ export const logOut = () => {
     .then((res) => getResponse(res));
 };
 
-export const getContent = (token) => {
-  return fetch(`${BASE_URL}/users/me`, {
-    method: 'GET',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-    .then((res) => getResponse(res));
-};
+// export const getContent = (token) => {
+//   return fetch(`${BASE_URL}/users/me`, {
+//     method: 'GET',
+//     credentials: 'include',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   })
+//     .then((res) => getResponse(res));
+// };
 
 function getResponse(res) {
   if (!res.ok) {

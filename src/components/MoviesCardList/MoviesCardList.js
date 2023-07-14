@@ -3,17 +3,13 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../Preloader/Preloader';
 
 function MoviesCardList(props) {
-  const foundMovies = JSON.parse(localStorage.getItem('foundMovies'));
+  const foundMovies = (JSON.parse(localStorage.getItem('foundMovies')));
 
-  // function moviesList() {
-  //   if (shortMoviesActive && props.isSavedMovie) {
-  //     return foundMovies.filter(movie => movie.duration <= 40);
-  //   } else
-  //   if (shortMoviesActive) {
-  //     return foundMovies.filter(movie => movie.duration <= 40);
-  //   }
-  //   return props.movies;
-  // }
+  if (props.movies.length === 0 || foundMovies === null) {
+    return (
+      <p className="moviesCardList__error">Ничего не найдено</p>
+    );
+  }
 
   if (props.isLoading) {
     return (
@@ -25,12 +21,6 @@ function MoviesCardList(props) {
     return (
       <p className="moviesCardList__error">Во&nbsp;время запроса произошла ошибка. Возможно, проблема с&nbsp;соединением или сервер недоступен. Подождите немного и&nbsp;попробуйте ещё раз</p>
     )
-  }
-
-  if (props.movies.length === 0) {
-    return (
-      <p className="moviesCardList__error">Ничего не найдено</p>
-    );
   }
 
   return (

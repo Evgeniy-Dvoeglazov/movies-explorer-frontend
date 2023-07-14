@@ -4,7 +4,7 @@ function MoviesCard(props) {
   const backgroundImage = props.isSavedMovie ? props.movie.image : `https://api.nomoreparties.co/${props.movie.image.url}`
 
   function handleClickBtn() {
-    if(props.isSavedMovie || props.isSaved(props.movie)) {
+    if (props.isSavedMovie || props.isSaved(props.movie)) {
       return props.onCardDelete(props.movie);
     }
     return props.saveMovie(props.movie);

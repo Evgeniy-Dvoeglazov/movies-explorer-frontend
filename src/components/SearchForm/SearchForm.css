@@ -42,6 +42,23 @@
   background-color: #3456f3;
 }
 
+.searchForm__button_disabled {
+  pointer-events: none;
+  opacity: .2;
+}
+
+.searchForm__error {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.21;
+  padding: 5px 0 0 0;
+}
+
+.searchForm__error_visible {
+  color: #ff3055;
+}
+
 @media screen and (max-width: 1279px) {
 
   .searchForm__field {
