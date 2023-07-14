@@ -30,6 +30,10 @@
 * React Hook,
 * БЭМ
 
-## Ссылки на макет
+## Ссылка на макет
 
 https://disk.yandex.ru/d/QY9eqFy5nZ56oQ
+
+## Ссылка на пул реквест
+
+https://github.com/Evgeniy-Dvoeglazov/movies-explorer-frontend/pull/2
