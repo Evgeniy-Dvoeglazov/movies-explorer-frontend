@@ -40,17 +40,6 @@ export const logOut = () => {
     .then((res) => getResponse(res));
 };
 
-// export const getContent = (token) => {
-//   return fetch(`${BASE_URL}/users/me`, {
-//     method: 'GET',
-//     credentials: 'include',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     }
-//   })
-//     .then((res) => getResponse(res));
-// };
-
 function getResponse(res) {
   if (!res.ok) {
     return Promise.reject(`Ошибка: ${res.status}`);

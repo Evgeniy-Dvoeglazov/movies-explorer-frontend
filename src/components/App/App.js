@@ -82,7 +82,6 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-        navigate("/signin", { replace: true })
       });
   }, []);
 
