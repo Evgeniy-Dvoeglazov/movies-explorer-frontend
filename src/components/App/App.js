@@ -77,7 +77,6 @@ function App() {
           setLoggedIn(true);
           setCurrentUser(res);
           navigate(location.pathname, { replace: true });
-          // getSavedMovies();
         }
       })
       .catch((err) => {
@@ -186,7 +185,7 @@ function App() {
   function handleLogout() {
     auth.logOut()
       .then(() => {
-        navigate('/signin', { replace: true });
+        navigate('/', { replace: true });
         setLoggedIn(false);
       })
       .catch((err) => {
