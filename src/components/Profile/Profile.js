@@ -45,7 +45,7 @@ function Profile(props) {
         <form className="profile__form" onSubmit={handleSubmit} noValidate>
           <div className="profile__form-field">
             <label className="profile__label">Имя</label>
-            <input className={`profile__input ${errors.name ? 'profile__input_red' : ''}`} name="name" type="text"
+            <input className={`profile__input ${errors.name ? 'profile__input_red' : ''}`} name="name" disabled={props.isLoading} type="text"
               {...register('name', {
                 required: 'Заполните это поле.',
                 minLength: {
@@ -59,7 +59,7 @@ function Profile(props) {
           {errors.name && <span className={errorClassname('name')}>{errors.name.message}</span>}
           <div className="profile__form-field">
             <label className="profile__label">E-mail</label>
-            <input className={`profile__input ${errors.email ? 'profile__input_red' : ''}`} name="email" type="email"
+            <input className={`profile__input ${errors.email ? 'profile__input_red' : ''}`} name="email" disabled={props.isLoading} type="email"
               {...register('email', {
                 required: 'Заполните это поле.',
                 pattern: {

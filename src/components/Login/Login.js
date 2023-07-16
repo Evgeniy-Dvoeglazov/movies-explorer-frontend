@@ -34,11 +34,12 @@ function Login(props) {
           buttonText="Войти"
           onSubmit={handleSubmit}
           isValid={isValid}
+          isLoading={props.isLoading}
           children={
             <>
               <div className="form__form-field">
                 <label className="form__label">E-mail</label>
-                <input className={`form__input ${errors.email ? 'form__input_red' : ''}`} name="email" type="email" placeholder=""
+                <input className={`form__input ${errors.email ? 'form__input_red' : ''}`} disabled={props.isLoading} name="email" type="email"  placeholder=""
                   {...register('email', {
                     required: 'Заполните это поле.',
                     pattern: {
@@ -51,7 +52,7 @@ function Login(props) {
               </div>
               <div className="form__form-field">
                 <label className="form__label">Пароль</label>
-                <input className={`form__input ${errors.password ? 'form__input_red' : ''}`} name="password" type="password" placeholder=""
+                <input className={`form__input ${errors.password ? 'form__input_red' : ''}`} name="password" type="password" disabled={props.isLoading} placeholder=""
                   {...register('password', {
                     required: 'Заполните это поле.'
                   })}

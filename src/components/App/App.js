@@ -130,11 +130,11 @@ function App() {
   // поиск фильмов
   function searchMovies(movieInputName, shortMoviesActive) {
     const moviesSearch = allMovies.filter((movie) => movie.nameRU.toLowerCase().includes(movieInputName.toLowerCase()));
-        const foundMovies = shortMoviesActive ? moviesSearch.filter(movie => movie.duration <= 40) : moviesSearch;
-        localStorage.setItem('foundMovies', JSON.stringify(foundMovies));
-        localStorage.setItem('movieInputName', movieInputName);
-        localStorage.setItem('shortMoviesActive', shortMoviesActive);
-        changeMoviesCardListLength();
+    const foundMovies = shortMoviesActive ? moviesSearch.filter(movie => movie.duration <= 40) : moviesSearch;
+    localStorage.setItem('foundMovies', JSON.stringify(foundMovies));
+    localStorage.setItem('movieInputName', movieInputName);
+    localStorage.setItem('shortMoviesActive', shortMoviesActive);
+    changeMoviesCardListLength();
   }
 
   function isSaved(movie) {
@@ -143,7 +143,6 @@ function App() {
 
   // сохранение фильмов
   function saveMovie(movie) {
-
     apiMain.saveMovie(movie)
       .then((res) => {
         setSavedMovies([...savedMovies, res]);
@@ -156,6 +155,7 @@ function App() {
 
   // регистрация
   function handleRegister(name, email, password) {
+    setIsLoading(true);
     auth.register(name, email, password)
       .then((res) => {
         if (res) {
@@ -165,11 +165,15 @@ function App() {
       .catch((err) => {
         setServerError(true);
         console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }
 
   // авторизация
   function handleLogin(password, email) {
+    setIsLoading(true);
     auth.authorize(password, email)
       .then((data) => {
         if (data.token) {
@@ -182,6 +186,9 @@ function App() {
       .catch((err) => {
         setServerError(true);
         console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }
 
@@ -216,6 +223,7 @@ function App() {
 
   // изменение информации в профиле
   function handleUserUpdate({ name, email }) {
+    setIsLoading(true);
     if (currentUser.name !== name || currentUser.email !== email) {
       apiMain.setUserInfo({ name, email })
         .then((res) => {
@@ -224,6 +232,9 @@ function App() {
         })
         .catch((err) => {
           console.log(err);
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
     } else {
       setSuccessChangeProfile(false);
@@ -304,6 +315,7 @@ function App() {
                 onUpdateUser={handleUserUpdate}
                 successChangeProfile={successChangeProfile}
                 changeVisibleProfileError={changeVisibleProfileError}
+                isLoading={isLoading}
               />
             </>
           } />
@@ -312,12 +324,14 @@ function App() {
               <Login
                 onLogin={handleLogin}
                 serverError={serverError}
+                isLoading={isLoading}
               />
             } />}
           {!loggedIn && <Route path="/signup" element={
             <Register
               onRegister={handleRegister}
               serverError={serverError}
+              isLoading={isLoading}
             />
           } />}
           <Route path="*" element={
