@@ -1,11 +1,12 @@
 import './Profile.css';
 import { useForm } from 'react-hook-form';
-import { useContext, useEffect } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function Profile(props) {
 
   const currentUser = useContext(CurrentUserContext);
+  const [currentDataError, setCurrentDataError] = useState(false);
 
   const { register, formState: { errors, isValid }, getValues, setValue } = useForm({ mode: 'onChange', criteriaMode: 'all' });
 
@@ -21,6 +22,15 @@ function Profile(props) {
       name: getValues('name'),
       email: getValues('email')
     });
+  }
+
+  function checkCurrentData(e) {
+    props.changeVisibleProfileError();
+    if (e.target.value === (currentUser.name || currentUser.email)) {
+      setCurrentDataError(true);
+    } else {
+      setCurrentDataError(false);
+    }
   }
 
   useEffect(() => {
@@ -41,7 +51,8 @@ function Profile(props) {
                 minLength: {
                   value: 2,
                   message: 'Текст должен быть не короче 2 символов.'
-                }
+                },
+                onChange: (e) => checkCurrentData(e)
               })}
             />
           </div>
@@ -59,8 +70,9 @@ function Profile(props) {
             />
           </div>
           {errors.email && <span className={errorClassname('email')}>{errors.email.message}</span>}
-          <span className='profile__submit-error'>{props.successChangeProfile || ''}</span>
-          <button className={`profile__submit-btn button-opacity ${isValid ? '' : 'profile__submit-btn_disabled'}`} disabled={props.isLoading} type="submit">Редактировать</button>
+          {currentDataError && <span className='profile__submit-info'>Указыны текущие данные. Необходимо их изменить</span>}
+          {props.successChangeProfile && <span className='profile__submit-info'>Данные успешно сохранены</span>}
+          <button className={`profile__submit-btn button-opacity ${(isValid && !currentDataError && !props.successChangeProfile) ? '' : 'profile__submit-btn_disabled'}`} disabled={props.isLoading} type="submit">Редактировать</button>
         </form>
         <button className="profile__exit-btn button-opacity" type="button" onClick={handleExitBtn}>Выйти из&nbsp;аккаунта</button>
       </div>

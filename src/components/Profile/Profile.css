@@ -56,7 +56,6 @@
 
 .profile__submit-btn_disabled {
   pointer-events: none;
-  opacity: .2;
 }
 
 .profile__exit-btn {
@@ -84,13 +83,13 @@
   color: #ff3055;
 }
 
-.profile__submit-error {
+.profile__submit-info {
   display: block;
   text-align: center;
   font-size: 13px;
   opacity: .8;
   line-height: 1.21;
-  padding: 40px 0 0 0;
+  padding: 20px 0 0 0;
   color: #000;
 }
 

@@ -26,7 +26,7 @@ function App() {
   const [serverError, setServerError] = useState(false);
   const [moreMovies, setMoreMovies] = useState(0);
   const [isSavedMovie, setIsSavedMovie] = useState(false);
-  const [successChangeProfile, setSuccessChangeProfile] = useState('');
+  const [successChangeProfile, setSuccessChangeProfile] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -212,14 +212,18 @@ function App() {
       apiMain.setUserInfo({ name, email })
         .then((res) => {
           setCurrentUser(res);
-          setSuccessChangeProfile('Данные успешно сохранены');
+          setSuccessChangeProfile(true);
         })
         .catch((err) => {
           console.log(err);
         });
     } else {
-      setSuccessChangeProfile('Указыны текущие данные. Необходимо их изменить');
+      setSuccessChangeProfile(false);
     }
+  }
+
+  function changeVisibleProfileError() {
+    setSuccessChangeProfile(false);
   }
 
   return (
@@ -290,6 +294,7 @@ function App() {
                 onSignOut={handleLogout}
                 onUpdateUser={handleUserUpdate}
                 successChangeProfile={successChangeProfile}
+                changeVisibleProfileError={changeVisibleProfileError}
               />
             </>
           } />
