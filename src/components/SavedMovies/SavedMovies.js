@@ -3,6 +3,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import deleteCardBtnImage from '../../images/button-delete.svg';
 import { useState, useEffect } from 'react';
+import { shortDuration }  from '../../utils/constants';
 
 function SavedMovies(props) {
   const [foundMovies, setFoundMovies] = useState([]);
@@ -15,7 +16,7 @@ function SavedMovies(props) {
     const moviesSearch = props.savedMovies.filter((movie) => movie.nameRU.toLowerCase().includes(movieInputName.toLowerCase()));
 
     if (shortMoviesActive) {
-      setFoundMovies(moviesSearch.filter(movie => movie.duration <= 40))
+      setFoundMovies(moviesSearch.filter(movie => movie.duration <= shortDuration))
     } else {
       setFoundMovies(moviesSearch);
     }

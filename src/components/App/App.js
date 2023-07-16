@@ -14,6 +14,16 @@ import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { apiMovies } from '../../utils/MoviesApi';
 import { apiMain } from '../../utils/MainApi';
 import * as auth from '../../utils/auth.js';
+import {
+  shortDuration,
+  wideScreenNumberMovies,
+  middleScreenNumberMovies,
+  smallScreenNumberMovies,
+  wideScreenWidth,
+  smallScreenWidth,
+  wideScreenMoreMovies,
+  smallScreenMoreMovies
+} from '../../utils/constants';
 import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute';
 
 function App() {
@@ -91,17 +101,17 @@ function App() {
     if (foundMovies === null) {
       return
     }
-    if (width > 1133) {
-      setMovies(foundMovies.slice(0, 12));
-      setMoreMovies(3);
+    if (width > wideScreenWidth) {
+      setMovies(foundMovies.slice(0, wideScreenNumberMovies));
+      setMoreMovies(wideScreenMoreMovies);
     }
-    if (width <= 1133) {
-      setMovies(foundMovies.slice(0, 8));
-      setMoreMovies(2);
+    if (width <= wideScreenWidth) {
+      setMovies(foundMovies.slice(0, middleScreenNumberMovies));
+      setMoreMovies(smallScreenMoreMovies);
     }
-    if (width <= 643) {
-      setMovies(foundMovies.slice(0, 5));
-      setMoreMovies(2);
+    if (width <= smallScreenWidth) {
+      setMovies(foundMovies.slice(0, smallScreenNumberMovies));
+      setMoreMovies(smallScreenMoreMovies);
     }
   }
 
@@ -130,7 +140,7 @@ function App() {
   // поиск фильмов
   function searchMovies(movieInputName, shortMoviesActive) {
     const moviesSearch = allMovies.filter((movie) => movie.nameRU.toLowerCase().includes(movieInputName.toLowerCase()));
-    const foundMovies = shortMoviesActive ? moviesSearch.filter(movie => movie.duration <= 40) : moviesSearch;
+    const foundMovies = shortMoviesActive ? moviesSearch.filter(movie => movie.duration <= shortDuration) : moviesSearch;
     localStorage.setItem('foundMovies', JSON.stringify(foundMovies));
     localStorage.setItem('movieInputName', movieInputName);
     localStorage.setItem('shortMoviesActive', shortMoviesActive);
