@@ -3,7 +3,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import deleteCardBtnImage from '../../images/button-delete.svg';
 import { useState, useEffect } from 'react';
-import { shortDuration }  from '../../utils/constants';
+import { shortDuration } from '../../utils/constants';
 
 function SavedMovies(props) {
   const [foundMovies, setFoundMovies] = useState([]);

@@ -71,6 +71,7 @@ function Profile(props) {
           </div>
           {errors.email && <span className={errorClassname('email')}>{errors.email.message}</span>}
           {currentDataError && <span className='profile__submit-info'>Указаны текущие данные. Необходимо их изменить</span>}
+          {props.serverError && <span className="profile__submit-info">На сервере произошла ошибка...</span>}
           {props.successChangeProfile && <span className='profile__submit-info'>Данные успешно сохранены</span>}
           <button className={`profile__submit-btn button-opacity ${(isValid && !currentDataError && !props.successChangeProfile) ? '' : 'profile__submit-btn_disabled'}`} disabled={props.isLoading} type="submit">Редактировать</button>
         </form>

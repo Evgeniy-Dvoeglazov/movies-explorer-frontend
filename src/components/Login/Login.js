@@ -39,7 +39,7 @@ function Login(props) {
             <>
               <div className="form__form-field">
                 <label className="form__label">E-mail</label>
-                <input className={`form__input ${errors.email ? 'form__input_red' : ''}`} disabled={props.isLoading} name="email" type="email"  placeholder=""
+                <input className={`form__input ${errors.email ? 'form__input_red' : ''}`} disabled={props.isLoading} name="email" type="email" placeholder=""
                   {...register('email', {
                     required: 'Заполните это поле.',
                     pattern: {

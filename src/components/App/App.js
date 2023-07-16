@@ -56,17 +56,6 @@ function App() {
     };
   }, [width]);
 
-  // Получаем данные пользователя
-  function getUserInfo() {
-    apiMain.getUserInfo()
-      .then((res) => {
-        setCurrentUser(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
   // Получаем карточки во вкладке "избранное"
   useEffect(() => {
     if (loggedIn) {
@@ -76,6 +65,7 @@ function App() {
           setIsSavedMovie(true);
         })
         .catch((err) => {
+          setServerError(true);
           console.log(err);
         })
     }
@@ -94,6 +84,17 @@ function App() {
         console.log(err);
       });
   }, []);
+
+  // Получаем данные пользователя
+  function getUserInfo() {
+    apiMain.getUserInfo()
+      .then((res) => {
+        setCurrentUser(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   // Получаем карточки во влкадке movies в зависимости от ширины экрана
   function changeMoviesCardListLength() {
@@ -159,6 +160,7 @@ function App() {
         setIsSavedMovie(true);
       })
       .catch((err) => {
+        setServerError(true);
         console.log(err);
       });
   }
@@ -215,6 +217,7 @@ function App() {
         setLoggedIn(false);
       })
       .catch((err) => {
+        setServerError(true);
         console.log(err);
       });
   }
@@ -227,6 +230,7 @@ function App() {
         setSavedMovies((movies) => movies.filter((c) => c._id !== deleteMovie._id));
       })
       .catch((err) => {
+        setServerError(true);
         console.log(err);
       });
   }
@@ -241,6 +245,7 @@ function App() {
           setSuccessChangeProfile(true);
         })
         .catch((err) => {
+          setServerError(true);
           console.log(err);
         })
         .finally(() => {
@@ -326,6 +331,7 @@ function App() {
                 successChangeProfile={successChangeProfile}
                 changeVisibleProfileError={changeVisibleProfileError}
                 isLoading={isLoading}
+                serverError={serverError}
               />
             </>
           } />
