@@ -185,6 +185,7 @@ function App() {
   function handleLogout() {
     auth.logOut()
       .then(() => {
+        localStorage.removeItem('token');
         navigate('/', { replace: true });
         setLoggedIn(false);
       })
