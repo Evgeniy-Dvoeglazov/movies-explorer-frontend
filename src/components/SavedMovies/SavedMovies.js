@@ -6,15 +6,10 @@ import { useState, useEffect } from 'react';
 
 function SavedMovies(props) {
   const [foundMovies, setFoundMovies] = useState([]);
-  const shortMoviesActive = JSON.parse(localStorage.getItem('shortMoviesActive'));
 
   useEffect(() => {
-    if (shortMoviesActive) {
-      setFoundMovies(props.savedMovies.filter(movie => movie.duration <= 40));
-    } else {
-      setFoundMovies(props.savedMovies);
-    }
-  }, [props.savedMovies, shortMoviesActive]);
+    setFoundMovies([...props.savedMovies]);
+  }, [props.savedMovies]);
 
   function searchMovies(movieInputName, shortMoviesActive) {
     const moviesSearch = props.savedMovies.filter((movie) => movie.nameRU.toLowerCase().includes(movieInputName.toLowerCase()));
@@ -24,13 +19,14 @@ function SavedMovies(props) {
     } else {
       setFoundMovies(moviesSearch);
     }
-    localStorage.setItem('shortMoviesActive', shortMoviesActive);
   }
 
   return (
     <section className="savedMovies">
       <SearchForm
         searchMovies={searchMovies}
+        defaultCheckbox={false}
+        defaultInputValue={''}
       />
       <MoviesCardList
         movies={foundMovies}

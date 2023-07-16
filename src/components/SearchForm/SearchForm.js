@@ -8,15 +8,14 @@ function SearchForm(props) {
 
   const [movieInputName, setMovieInputName] = useState('');
   const [isCheckboxActive, setIsCheckboxActive] = useState(false);
-  const inputValueName = localStorage.getItem('movieInputName');
 
   const { register, formState: { errors, isValid }, getValues, setValue } = useForm({ mode: 'onChange', criteriaMode: 'all' });
 
   const errorClassname = (name) => `searchForm__error ${errors[name] ? 'searchForm__error_visible' : ''}`;
 
   useEffect(() => {
-    setIsCheckboxActive(JSON.parse(localStorage.getItem('shortMoviesActive')));
-    setValue('movie', inputValueName);
+    setIsCheckboxActive(props.defaultCheckbox);
+    setValue('movie', props.defaultInputValue);
   }, []);
 
   function handleSubmit(e) {

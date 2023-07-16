@@ -7,6 +7,8 @@ function Movies(props) {
     <section className="movies">
       <SearchForm
         searchMovies={props.searchMovies}
+        defaultCheckbox={JSON.parse(localStorage.getItem('shortMoviesActive'))}
+        defaultInputValue={localStorage.getItem('movieInputName')}
       />
       <MoviesCardList
         buttonText="Сохранить"

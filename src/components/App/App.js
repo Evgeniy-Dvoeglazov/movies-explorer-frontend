@@ -61,6 +61,7 @@ function App() {
     if (loggedIn) {
       apiMain.getMovies()
         .then((res) => {
+          console.log(res);
           setSavedMovies([...res]);
           setIsSavedMovie(true);
         })
@@ -142,8 +143,7 @@ function App() {
 
     apiMain.saveMovie(movie)
       .then((res) => {
-        console.log(res)
-        setSavedMovies([res, ...savedMovies]);
+        setSavedMovies([...savedMovies, res]);
         setIsSavedMovie(true);
       })
       .catch((err) => {
