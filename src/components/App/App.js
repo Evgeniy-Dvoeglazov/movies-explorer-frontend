@@ -292,7 +292,9 @@ function App() {
                 isMainPage={false}
                 width={width}
               />
-              <Profile
+              <ProtectedRouteElement
+                element={Profile}
+                loggedIn={loggedIn}
                 onSignOut={handleLogout}
                 onUpdateUser={handleUserUpdate}
                 successChangeProfile={successChangeProfile}
@@ -300,19 +302,19 @@ function App() {
               />
             </>
           } />
-          <Route path="/signin" element={
-            <Login
-              onLogin={handleLogin}
-              serverError={serverError}
-            />
-          }
-          />
-          <Route path="/signup" element={
+          {!loggedIn &&
+            <Route path="/signin" element={
+              <Login
+                onLogin={handleLogin}
+                serverError={serverError}
+              />
+            } />}
+          {!loggedIn && <Route path="/signup" element={
             <Register
               onRegister={handleRegister}
               serverError={serverError}
             />
-          } />
+          } />}
           <Route path="*" element={
             <NotFoundPage />
           } />
