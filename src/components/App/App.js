@@ -195,8 +195,7 @@ function App() {
 
   // удаление фильма из избранного
   function handleDeleteMovie(movie) {
-    const deleteMovie = savedMovies.find(savedMovie => savedMovie.movieId === (movie.id || savedMovie.movieId) && savedMovie.owner === currentUser._id);
-
+    const deleteMovie = savedMovies.find(savedMovie => savedMovie.movieId === (movie.id || movie.movieId) && savedMovie.owner === currentUser._id);
     apiMain.removeMovie(deleteMovie._id)
       .then(() => {
         setSavedMovies((movies) => movies.filter((c) => c._id !== deleteMovie._id));
