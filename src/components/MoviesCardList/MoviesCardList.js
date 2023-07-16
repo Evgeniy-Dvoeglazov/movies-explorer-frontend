@@ -5,7 +5,13 @@ import Preloader from '../Preloader/Preloader';
 function MoviesCardList(props) {
   const foundMovies = (JSON.parse(localStorage.getItem('foundMovies')));
 
-  if (props.movies.length === 0 || foundMovies === null) {
+  if (foundMovies === null && props.movies.length === 0) {
+    return (
+      <p className="moviesCardList__error"></p>
+    );
+  }
+
+  if (props.movies.length === 0) {
     return (
       <p className="moviesCardList__error">Ничего не найдено</p>
     );
@@ -40,7 +46,7 @@ function MoviesCardList(props) {
         ))
         }
       </ul>
-      {foundMovies.length !== props.movies.length && props.movies.length !== 0 && !props.isSavedMovie ? <button className="moviesCardList__button button-opacity" type="button" onClick={props.addMoreMovies}>Ещё</button> : ''}
+      {props.isSavedMovie ? '' : (props.movies.length < foundMovies.length ? <button className="moviesCardList__button button-opacity" type="button" onClick={props.addMoreMovies}>Ещё</button> : '')}
     </section>
   );
 }

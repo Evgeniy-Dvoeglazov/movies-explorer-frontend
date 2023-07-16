@@ -61,7 +61,6 @@ function App() {
     if (loggedIn) {
       apiMain.getMovies()
         .then((res) => {
-          console.log(res);
           setSavedMovies([...res]);
           setIsSavedMovie(true);
         })
@@ -183,9 +182,13 @@ function App() {
 
   // выход из профиля
   function handleLogout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('movieInputName');
+    localStorage.removeItem('shortMoviesActive');
+    localStorage.removeItem('foundMovies');
+    setMovies([]);
     auth.logOut()
       .then(() => {
-        localStorage.removeItem('token');
         navigate('/', { replace: true });
         setLoggedIn(false);
       })
@@ -272,7 +275,6 @@ function App() {
               />
               <ProtectedRouteElement
                 element={SavedMovies}
-                searchMovies={searchMovies}
                 loggedIn={loggedIn}
                 serverError={serverError}
                 savedMovies={savedMovies}
