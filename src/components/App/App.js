@@ -31,7 +31,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [movies, setMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
-  const [allMovies, setAllMovies] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [serverError, setServerError] = useState(false);
@@ -127,7 +126,7 @@ function App() {
     setIsLoading(true);
     apiMovies.getMovies()
       .then((res) => {
-        setAllMovies([...res]);
+        localStorage.setItem('allMovies', JSON.stringify(res));
       })
       .catch((err) => {
         console.log(err);
@@ -140,6 +139,7 @@ function App() {
 
   // поиск фильмов
   function searchMovies(movieInputName, shortMoviesActive) {
+    const allMovies = JSON.parse(localStorage.getItem('allMovies'));
     const moviesSearch = allMovies.filter((movie) => movie.nameRU.toLowerCase().includes(movieInputName.toLowerCase()));
     const foundMovies = shortMoviesActive ? moviesSearch.filter(movie => movie.duration <= shortDuration) : moviesSearch;
     localStorage.setItem('foundMovies', JSON.stringify(foundMovies));
@@ -210,6 +210,7 @@ function App() {
     localStorage.removeItem('movieInputName');
     localStorage.removeItem('shortMoviesActive');
     localStorage.removeItem('foundMovies');
+    localStorage.removeItem('allMovies');
     setMovies([]);
     auth.logOut()
       .then(() => {
