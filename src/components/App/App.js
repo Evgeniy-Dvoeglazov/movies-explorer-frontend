@@ -21,6 +21,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [movies, setMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
+  const [allMovies, setAllMovies] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [serverError, setServerError] = useState(false);
@@ -111,18 +112,11 @@ function App() {
     setMovies(foundMovies.slice(0, movies.length + moreMovies));
   }
 
-  // поиск фильмов
-  function searchMovies(movieInputName, shortMoviesActive) {
+  function getMovies() {
     setIsLoading(true);
-
     apiMovies.getMovies()
       .then((res) => {
-        const moviesSearch = res.filter((movie) => movie.nameRU.toLowerCase().includes(movieInputName.toLowerCase()));
-        const foundMovies = shortMoviesActive ? moviesSearch.filter(movie => movie.duration <= 40) : moviesSearch;
-        localStorage.setItem('foundMovies', JSON.stringify(foundMovies));
-        localStorage.setItem('movieInputName', movieInputName);
-        localStorage.setItem('shortMoviesActive', shortMoviesActive);
-        changeMoviesCardListLength();
+        setAllMovies([...res]);
       })
       .catch((err) => {
         console.log(err);
@@ -131,6 +125,16 @@ function App() {
       .finally(() => {
         setIsLoading(false);
       });
+  }
+
+  // поиск фильмов
+  function searchMovies(movieInputName, shortMoviesActive) {
+    const moviesSearch = allMovies.filter((movie) => movie.nameRU.toLowerCase().includes(movieInputName.toLowerCase()));
+        const foundMovies = shortMoviesActive ? moviesSearch.filter(movie => movie.duration <= 40) : moviesSearch;
+        localStorage.setItem('foundMovies', JSON.stringify(foundMovies));
+        localStorage.setItem('movieInputName', movieInputName);
+        localStorage.setItem('shortMoviesActive', shortMoviesActive);
+        changeMoviesCardListLength();
   }
 
   function isSaved(movie) {
@@ -172,6 +176,7 @@ function App() {
           setLoggedIn(true);
           navigate('/movies', { replace: true });
           getUserInfo();
+          getMovies();
         }
       })
       .catch((err) => {
