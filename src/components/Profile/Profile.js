@@ -52,7 +52,7 @@ function Profile(props) {
               {...register('email', {
                 required: 'Заполните это поле.',
                 pattern: {
-                  value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                  value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
                   message: 'Введите Email'
                 }
               })}
