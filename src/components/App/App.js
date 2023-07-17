@@ -33,6 +33,7 @@ function App() {
   const [savedMovies, setSavedMovies] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [serverErrorMovies, setServerErrorMovies] = useState(false);
   const [serverError, setServerError] = useState(false);
   const [moreMovies, setMoreMovies] = useState(0);
   const [isSavedMovie, setIsSavedMovie] = useState(false);
@@ -64,7 +65,7 @@ function App() {
           setIsSavedMovie(true);
         })
         .catch((err) => {
-          setServerError(true);
+          setServerErrorMovies(true);
           console.log(err);
         })
     }
@@ -130,7 +131,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-        setServerError(true);
+        setServerErrorMovies(true);
       })
       .finally(() => {
         setIsLoading(false);
@@ -160,7 +161,7 @@ function App() {
         setIsSavedMovie(true);
       })
       .catch((err) => {
-        setServerError(true);
+        setServerErrorMovies(true);
         console.log(err);
       });
   }
@@ -231,7 +232,7 @@ function App() {
         setSavedMovies((movies) => movies.filter((c) => c._id !== deleteMovie._id));
       })
       .catch((err) => {
-        setServerError(true);
+        setServerErrorMovies(true);
         console.log(err);
       });
   }
@@ -290,7 +291,7 @@ function App() {
                 saveMovie={saveMovie}
                 addMoreMovies={addMoreMovies}
                 isLoading={isLoading}
-                serverError={serverError}
+                serverErrorMovies={serverErrorMovies}
                 loggedIn={loggedIn}
                 isSaved={isSaved}
                 onCardDelete={handleDeleteMovie}
@@ -308,7 +309,7 @@ function App() {
               <ProtectedRouteElement
                 element={SavedMovies}
                 loggedIn={loggedIn}
-                serverError={serverError}
+                serverErrorMovies={serverErrorMovies}
                 savedMovies={savedMovies}
                 isSavedMovie={isSavedMovie}
                 onCardDelete={handleDeleteMovie}

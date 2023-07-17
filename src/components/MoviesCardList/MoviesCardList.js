@@ -23,7 +23,7 @@ function MoviesCardList(props) {
     )
   }
 
-  if (props.serverError) {
+  if (props.serverErrorMovies) {
     return (
       <p className="moviesCardList__error">Во&nbsp;время запроса произошла ошибка. Возможно, проблема с&nbsp;соединением или сервер недоступен. Подождите немного и&nbsp;попробуйте ещё раз</p>
     )
