@@ -35,6 +35,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [serverErrorMovies, setServerErrorMovies] = useState(false);
   const [serverError, setServerError] = useState(false);
+  const [serverErrorProfile, setServerErrorProfile] = useState(false);
   const [moreMovies, setMoreMovies] = useState(0);
   const [isSavedMovie, setIsSavedMovie] = useState(false);
   const [successChangeProfile, setSuccessChangeProfile] = useState(false);
@@ -213,6 +214,10 @@ function App() {
     localStorage.removeItem('foundMovies');
     localStorage.removeItem('allMovies');
     setMovies([]);
+    setServerErrorProfile(false);
+    setServerErrorMovies(false);
+    setServerError(false);
+    setSuccessChangeProfile(false);
     auth.logOut()
       .then(() => {
         navigate('/', { replace: true });
@@ -239,15 +244,15 @@ function App() {
 
   // изменение информации в профиле
   function handleUserUpdate({ name, email }) {
-    setIsLoading(true);
     if (currentUser.name !== name || currentUser.email !== email) {
+      setIsLoading(true);
       apiMain.setUserInfo({ name, email })
         .then((res) => {
           setCurrentUser(res);
           setSuccessChangeProfile(true);
         })
         .catch((err) => {
-          setServerError(true);
+          setServerErrorProfile(true);
           console.log(err);
         })
         .finally(() => {
@@ -258,8 +263,9 @@ function App() {
     }
   }
 
-  function changeVisibleProfileError() {
+  function changeVisibleError() {
     setSuccessChangeProfile(false);
+    setServerErrorProfile(false);
   }
 
   return (
@@ -331,9 +337,9 @@ function App() {
                 onSignOut={handleLogout}
                 onUpdateUser={handleUserUpdate}
                 successChangeProfile={successChangeProfile}
-                changeVisibleProfileError={changeVisibleProfileError}
+                changeVisibleError={changeVisibleError}
                 isLoading={isLoading}
-                serverError={serverError}
+                serverErrorProfile={serverErrorProfile}
               />
             </>
           } />

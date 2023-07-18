@@ -6,7 +6,8 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 function Profile(props) {
 
   const currentUser = useContext(CurrentUserContext);
-  const [currentDataError, setCurrentDataError] = useState(false);
+  const [isCurrentDataError, setIsCurrentDataError] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const { register, formState: { errors, isValid }, getValues, setValue } = useForm({ mode: 'onChange', criteriaMode: 'all' });
 
@@ -14,6 +15,8 @@ function Profile(props) {
 
   function handleExitBtn() {
     props.onSignOut();
+    setIsCurrentDataError(false);
+    setIsButtonDisabled(false);
   }
 
   function handleSubmit(e) {
@@ -25,11 +28,13 @@ function Profile(props) {
   }
 
   function checkCurrentData(e) {
-    props.changeVisibleProfileError();
-    if (e.target.value === (currentUser.name || currentUser.email)) {
-      setCurrentDataError(true);
+    props.changeVisibleError();
+    if (e.target.value === currentUser.name || e.target.value === currentUser.email) {
+      setIsCurrentDataError(true);
+      setIsButtonDisabled(true);
     } else {
-      setCurrentDataError(false);
+      setIsCurrentDataError(false);
+      setIsButtonDisabled(false);
     }
   }
 
@@ -37,6 +42,14 @@ function Profile(props) {
     setValue('name', currentUser.name);
     setValue('email', currentUser.email);
   }, [currentUser]);
+
+  useEffect(() => {
+    if (getValues('name') === currentUser.name || getValues('email') === currentUser.email) {
+      setIsButtonDisabled(true);
+    } else {
+      setIsButtonDisabled(false);
+    }
+  }, []);
 
   return (
     <section className="profile">
@@ -65,15 +78,16 @@ function Profile(props) {
                 pattern: {
                   value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
                   message: 'Введите Email'
-                }
+                },
+                onChange: (e) => checkCurrentData(e)
               })}
             />
           </div>
           {errors.email && <span className={errorClassname('email')}>{errors.email.message}</span>}
-          {currentDataError && <span className='profile__submit-info'>Указаны текущие данные. Необходимо их изменить</span>}
-          {props.serverError && <span className="profile__submit-info">На сервере произошла ошибка...</span>}
+          {isCurrentDataError && <span className='profile__submit-info'>Указаны текущие данные. Необходимо их изменить</span>}
+          {props.serverErrorProfile && <span className="profile__submit-info">На сервере произошла ошибка...</span>}
           {props.successChangeProfile && <span className='profile__submit-info'>Данные успешно сохранены</span>}
-          <button className={`profile__submit-btn button-opacity ${(isValid && !currentDataError && !props.successChangeProfile) ? '' : 'profile__submit-btn_disabled'}`} disabled={props.isLoading} type="submit">Редактировать</button>
+          <button className={`profile__submit-btn button-opacity ${(isValid && !props.successChangeProfile && !isButtonDisabled && !props.serverErrorProfile) ? '' : 'profile__submit-btn_disabled'}`} disabled={props.isLoading} type="submit">Редактировать</button>
         </form>
         <button className="profile__exit-btn button-opacity" type="button" onClick={handleExitBtn}>Выйти из&nbsp;аккаунта</button>
       </div>
