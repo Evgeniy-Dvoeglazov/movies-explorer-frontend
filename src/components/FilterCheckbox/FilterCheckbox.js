@@ -1,17 +1,16 @@
 import './FilterCheckbox.css';
-import { useState } from 'react';
 
-function FilterCheckbox() {
-  const [isCheckboxActive, setIsCheckboxActive] = useState(false);
+function FilterCheckbox(props) {
 
-  function switchCheckbox() {
-    setIsCheckboxActive(!isCheckboxActive);
+  function onSwitchCheckbox(e) {
+    const shortMovieChange = e.target.checked;
+    props.handleSwitchCheckbox(shortMovieChange);
   }
 
   return (
     <div className="filterCheckbox">
-      <label className={`filterCheckbox__label ${isCheckboxActive && 'filterCheckbox__label_active'}`}>
-        <input className="filterCheckbox__btn" type="checkbox" onClick={switchCheckbox} />
+      <label className={`filterCheckbox__label ${props.isCheckboxActive && 'filterCheckbox__label_active'}`}>
+        <input className="filterCheckbox__btn" checked={props.isCheckboxActive} type="checkbox" onChange={onSwitchCheckbox} />
       </label>
       <p className="filterCheckbox__description">Короткометражки</p>
     </div>

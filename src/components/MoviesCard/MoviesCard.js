@@ -1,21 +1,25 @@
 import './MoviesCard.css';
-import { useState } from 'react';
 
 function MoviesCard(props) {
-  const [isButtonActive, setIsButtonActive] = useState(false);
+  const backgroundImage = props.isSavedMovie ? props.movie.image : `https://api.nomoreparties.co/${props.movie.image.url}`
 
-  function switchButton() {
-    return props.changeButton ? setIsButtonActive(!isButtonActive) : false;
+  function handleClickBtn() {
+    if (props.isSavedMovie || props.isSaved(props.movie)) {
+      return props.onCardDelete(props.movie);
+    }
+    return props.saveMovie(props.movie);
   }
 
   return (
     <li className="moviesCard">
       <div className="moviesCard__header">
-        <h2 className="moviesCard__title">{props.movie.name}</h2>
+        <h2 className="moviesCard__title">{props.movie.nameRU}</h2>
         <p className="moviesCard__duration">{props.movie.duration}</p>
       </div>
-      <div className="moviesCard__image" style={{ backgroundImage: `url(${props.movie.link}` }} ></div>
-      <button className={`moviesCard__button button-opacity ${isButtonActive && 'moviesCard__button_active'}`} type="submit" onClick={switchButton}>{props.buttonText}</button>
+      <a href={props.movie.trailerLink} target="_blank" rel="noreferrer">
+        <div className="moviesCard__image" style={{ backgroundImage: `url(${backgroundImage})` }} ></div>
+      </a>
+      <button className={`moviesCard__button button-opacity ${props.isSaved(props.movie) && 'moviesCard__button_active'}`} type="button" onClick={handleClickBtn}>{props.buttonText}</button>
     </li>
   );
 }

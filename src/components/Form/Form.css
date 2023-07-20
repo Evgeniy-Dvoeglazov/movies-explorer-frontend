@@ -31,8 +31,20 @@
   border-radius: 3px;
 }
 
+.form__button_disabled {
+  pointer-events: none;
+  opacity: .2;
+}
+
 .form__emptiness {
   margin-bottom: 87px;
+}
+
+.form__submit-error {
+  display: block;
+  font-size: 16px;
+  text-align: center;
+  color: #ff3055;
 }
 
 .form__error {

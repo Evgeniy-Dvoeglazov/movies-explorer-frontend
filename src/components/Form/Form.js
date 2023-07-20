@@ -4,7 +4,8 @@ function Form(props) {
   return (
     <form className="form" onSubmit={props.onSubmit} noValidate>
       {props.children}
-      <button className="form__button button-opacity" type="submit">{props.buttonText}</button>
+      {props.serverError && <span className="form__submit-error">На сервере произошла ошибка...</span>}
+      <button className={`form__button button-opacity ${props.isValid ? '' : 'form__button_disabled'}`} type="submit" disabled={props.isLoading}>{props.buttonText}</button>
     </form>
   );
 }

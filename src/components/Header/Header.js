@@ -17,6 +17,8 @@ function Header(props) {
         </button>
         <Navigation
           loggedIn={props.loggedIn}
+          width={props.width}
+          isMainPage={props.isMainPage}
         />
       </div>
     </header>

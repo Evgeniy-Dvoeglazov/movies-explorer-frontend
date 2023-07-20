@@ -1,29 +1,52 @@
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
-import movies from '../../utils/config';
-import { useState } from 'react';
+import Preloader from '../Preloader/Preloader';
 
 function MoviesCardList(props) {
-  const [isButtonActive, setIsButtonActive] = useState(6);
+  const foundMovies = (JSON.parse(localStorage.getItem('foundMovies')));
 
-  const addMoreCards = () => isButtonActive < movies.length
-    ? setIsButtonActive(isButtonActive + 3)
-    : '';
+  if (foundMovies === null && props.movies.length === 0) {
+    return (
+      <p className="moviesCardList__error"></p>
+    );
+  }
+
+  if (props.movies.length === 0) {
+    return (
+      <p className="moviesCardList__error">Ничего не найдено</p>
+    );
+  }
+
+  if (props.isLoading) {
+    return (
+      <Preloader />
+    )
+  }
+
+  if (props.serverErrorMovies) {
+    return (
+      <p className="moviesCardList__error">Во&nbsp;время запроса произошла ошибка. Возможно, проблема с&nbsp;соединением или сервер недоступен. Подождите немного и&nbsp;попробуйте ещё раз</p>
+    )
+  }
 
   return (
     <section className="moviesCardList">
       <ul className="moviesCardList__content">
-        {movies.map((movie) => (
+        {props.movies.map((movie) => (
           <MoviesCard
-            key={movie.id}
+            key={movie.movieId || movie.id}
             movie={movie}
             buttonText={props.buttonText}
             changeButton={props.changeButton}
+            saveMovie={props.saveMovie}
+            onCardDelete={props.onCardDelete}
+            isSavedMovie={props.isSavedMovie}
+            isSaved={props.isSaved}
           />
-        )).slice(0, isButtonActive)
+        ))
         }
       </ul>
-      {isButtonActive !== movies.length ? <button className="moviesCardList__button button-opacity" type="button" onClick={addMoreCards}>Ещё</button> : ''}
+      {props.isSavedMovie ? '' : (props.movies.length < foundMovies.length ? <button className="moviesCardList__button button-opacity" type="button" onClick={props.addMoreMovies}>Ещё</button> : '')}
     </section>
   );
 }

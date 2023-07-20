@@ -1,5 +1,5 @@
 import './Navigation.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate, NavLink } from "react-router-dom";
 
 function Navigation(props) {
@@ -7,20 +7,6 @@ function Navigation(props) {
   const navigate = useNavigate();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [width, setWidth] = useState(window.innerWidth);
-
-  //Создаем эффект, который будет отслеживать ширину окна.
-  //Далее мы сможем использовать это, чтобы дополнительный блок меню в шапке исчезал при увеличении ширины окна
-
-  useEffect(() => {
-    const handleResize = (event) => {
-      setWidth(event.target.innerWidth);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
   function openMenu() {
     setIsMenuOpen(!isMenuOpen);
@@ -50,16 +36,16 @@ function Navigation(props) {
       :
       <>
         <div className={`navigation ${isMenuOpen ? "navigation__overlay" : ""}`}>
-          <nav className={`navigation__isLogin ${(width < 767 && isMenuOpen) ? "navigation__menu" : ""}`}>
+          <nav className={`navigation__isLogin ${(props.width < 767 && isMenuOpen) ? "navigation__menu" : ""}`}>
             <ul className="navigation__items">
               <li className="navigation__item">
-                <NavLink to="/" className={({ isActive }) => `navigation__link link-opacity ${isActive ? "navigation__link_active" : ""}`}>Главная</NavLink>
+                <NavLink to="/" className={({ isActive }) => `navigation__link navigation__link_blackText link-opacity ${isActive ? "navigation__link_active" : ""}`}>Главная</NavLink>
               </li>
               <li>
-                <NavLink to="/movies" className={({ isActive }) => `navigation__link link-opacity ${isActive ? "navigation__link_active" : ""}`}>Фильмы</NavLink>
+                <NavLink to="/movies" className={({ isActive }) => `navigation__link link-opacity ${isActive ? "navigation__link_active" : ""} ${props.isMainPage ? "navigation__link_whiteText" : "navigation__link_blackText"} ${isMenuOpen ? "navigation__link_blackText" : ""}`}>Фильмы</NavLink>
               </li>
               <li>
-                <NavLink to="/saved-movies" className={({ isActive }) => `navigation__link link-opacity ${isActive ? "navigation__link_active" : ""}`}>Сохраненные фильмы</NavLink>
+                <NavLink to="/saved-movies" className={({ isActive }) => `navigation__link link-opacity ${isActive ? "navigation__link_active" : ""} ${props.isMainPage ? "navigation__link_whiteText" : "navigation__link_blackText"} ${isMenuOpen ? "navigation__link_blackText" : ""}`}>Сохраненные фильмы</NavLink>
               </li>
             </ul>
             <button className="navigation__account-button button-opacity" type="button" onClick={handleProfileBtn}>Аккаунт</button>
@@ -67,9 +53,9 @@ function Navigation(props) {
           <div className="navigation__hamburger">
             <input className="navigation__checkbox" type="checkbox" name="checkbox" onClick={openMenu} />
             <div className="navigation__hamburger-lines">
-              <span className="navigation__line line1"></span>
-              <span className="navigation__line line2"></span>
-              <span className="navigation__line line3"></span>
+              <span className={`navigation__line line1 ${(isMenuOpen || !props.isMainPage) ? "navigation__line_blackColor" : "navigation__line_whiteColor"}`}></span>
+              <span className={`navigation__line line2 ${(isMenuOpen || !props.isMainPage) ? "navigation__line_blackColor" : "navigation__line_whiteColor"}`}></span>
+              <span className={`navigation__line line3 ${(isMenuOpen || !props.isMainPage) ? "navigation__line_blackColor" : "navigation__line_whiteColor"}`}></span>
             </div>
           </div>
         </div>
